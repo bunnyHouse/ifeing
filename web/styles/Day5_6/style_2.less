@@ -1,0 +1,67 @@
+body, table, tr, td, dl, dt, dd, ul {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f2f2f2;
+}
+
+.clearfix:after {
+    content: '';
+    clear: both;
+}
+
+.container {
+    width: 60%;
+    height: 100%;
+    min-height: 955px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.sidebar {
+    height: 100%;
+    min-height: 955px;
+    width: 25%;
+    float: left;
+    background-color: #5691F9;
+    h1 {
+        color: #ffffff;
+        display: block;
+        margin: 80px 0 0 80px;
+    }
+}
+
+.main {
+    height: 100%;
+    width: 70%;
+    float: left;
+    padding: 20px 0 0 50px;
+    
+    li {
+        list-style: none;
+    }
+    
+    li span:first-of-type {
+        font-weight: bold;
+    }
+    
+    .base-info, .concat-info {
+        li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+    }
+    
+    .skill-desc, .edu-background, .project-background {
+        li {
+            margin-bottom: 10px;
+        }
+    }
+}
+

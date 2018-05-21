@@ -1,0 +1,70 @@
+body, table, tr, td, dl, dt, dd, ul {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.clearfix:after {
+    content: '';
+    clear: both;
+}
+
+body {
+    background-color: #f2f2f2;
+}
+
+.container {
+    height: 100%;
+    width: 60%;
+    margin: 0 auto;
+    background-color: #fff;
+    .sidebar {
+        background-color: #727272;
+        height: 80px;
+        line-height: 80px;
+        padding-left: 20px;
+        width: 100%;
+        color: #fff;
+    }
+    .main {
+        li {
+            list-style: none;
+        }
+        .base-info, .concat-info {
+            li {
+                display: inline-block;
+                margin-right: 25px;
+            }
+        }
+        div {
+            width: 100%;
+            height: 160px;
+            padding-bottom: 1px;
+            border-bottom: 1px solid #cdcdcd;
+            h2 {
+                margin: 0;
+                height: 100%;
+                line-height: 160px;
+                width: 15%;
+                background-color: #cdcdcd;
+                float: left;
+                text-align: center;
+                vertical-align: middle;
+            }
+            ul {
+                padding: 20px 0 0 20px;
+                float: left;
+                height: 100%;
+                width: 80%;
+                float: left;
+                li span:first-of-type {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
