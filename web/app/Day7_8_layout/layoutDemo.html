@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet/less" href="../../styles/Day7_8_layout/layoutDemo.less">
+    <script src="../../../components/less.min.js"></script>
+</head>
+<body>
+<div class="twoColumnsLayout3to7Float">
+    <div class="left">
+            <span>
+                .left {<br>
+                    &nbsp;&nbsp;float: left;<br>
+                    &nbsp;&nbsp;//或float: right;<br>
+                    &nbsp;&nbsp;height: 100%;<br>
+                    &nbsp;&nbsp;width: 30%;<br>
+                    &nbsp;&nbsp;background-color: #9cf;<br>
+                }
+            </span>
+    </div>
+    <div class="right">
+            <span>
+                .right {<br>
+                    &nbsp;&nbsp;float: left;<br>
+                    &nbsp;&nbsp;height: 100%;<br>
+                    &nbsp;&nbsp;width: 70%;<br>
+                    &nbsp;&nbsp;background-color: #fcc;<br>
+                }
+            </span>
+    </div>
+</div>
+<div class="twoColumnsLayout3to7Position">
+    <div class="left">
+            <span>
+                position: relative;
+                .left {<br>
+                    &nbsp;&nbsp;position: absolute;<br>
+                    &nbsp;&nbsp;height: 100%;<br>
+                    &nbsp;&nbsp;width: 30%;<br>
+                    &nbsp;&nbsp;background-color: #9cf;<br>
+                }
+            </span>
+    </div>
+    <div class="right">
+            <span>
+                .right {<br>
+                    &nbsp;&nbsp;width: 70%;<br>
+                    &nbsp;&nbsp;height: 100%;<br>
+                    &nbsp;&nbsp;margin-left: 30%;<br>
+                    &nbsp;&nbsp;background-color: #fcc;<br>
+                }
+            </span>
+    </div>
+</div>
+<div class="twoColumnsLayout3to7Flexbox">
+    <div class="left">
+            <span>
+                display: flex;<br>
+                .left {<br>
+                    &nbsp;&nbsp;flex: 3;<br>
+                    &nbsp;&nbsp;height: 100%;<br>
+                    &nbsp;&nbsp;background-color: #9cf;<br>
+                }
+            </span>
+    </div>
+    <div class="right">
+            <span>
+                .right {<br>
+                    &nbsp;&nbsp;flex: 7;<br>
+                    &nbsp;&nbsp;height: 100%;<br>
+                    &nbsp;&nbsp;background-color: #fcc;<br>
+                }
+            </span>
+    </div>
+</div>
+<div class="twoColumnsLayoutFixToFlexFloat">
+    <div class="left">
+        <span>
+            overflow: hidden;<br>
+            .left {<br>
+                &nbsp;&nbsp;float: left;<br>
+                &nbsp;&nbsp;width: 200px;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;background-color: #9cf;<br>
+            }
+        </span>
+    </div>
+    <div class="right">
+        <span>
+            .right {<br>
+                &nbsp;&nbsp;width: 100%;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;padding-left: 200px;<br>
+                &nbsp;&nbsp;background-color: #fcc;<br>
+            }
+        </span>
+    </div>
+</div>
+<div class="twoColumnsLayoutFixToFlexPosition">
+    <div class="left">
+        <span>
+            position: relative;<br>
+            overflow: hidden;<br>
+            .left {<br>
+                &nbsp;&nbsp;position: absolute;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;width: 200px;<br>
+                &nbsp;&nbsp;background-color: #9cf;<br>
+            }
+        </span>
+    </div>
+    <div class="right">
+        <span>
+            .right {<br>
+                &nbsp;&nbsp;width: 100%;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;padding-left: 200px;<br>
+                &nbsp;&nbsp;background-color: #fcc;<br>
+            }
+        </span>
+    </div>
+</div>
+<div class="twoColumnsLayoutFixToFlexFlexbox">
+    <div class="left">
+        <span>
+            display: flex;<br>
+            .left {<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;width: 200px;<br>
+                &nbsp;&nbsp;background-color: #9cf;<br>
+            }
+        </span>
+    </div>
+    <div class="right">
+        <span>
+            .right {<br>
+                &nbsp;&nbsp;flex: 1;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;background-color: #fcc;<br>
+            }
+        </span>
+    </div>
+</div>
+<div class="twoColumnsLayoutFlexToFixFloat">
+    <div class="left">
+        <span>
+            .left {<br>
+                &nbsp;&nbsp;float: right;<br>
+                &nbsp;&nbsp;width: 200px;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;background-color: #9cf;<br>
+            }
+        </span>
+    </div>
+    <div class="right">
+        <span>
+            .right {<br>
+                &nbsp;&nbsp;width: 100%;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;padding-right: 200px;<br>
+                &nbsp;&nbsp;background-color: #fcc;<br>
+            }
+        </span>
+    </div>
+</div>
+<div class="twoColumnsLayoutFlexToFixPosition">
+    <div class="left">
+        <span>
+            position: relative;<br>
+            .left {<br>
+                &nbsp;&nbsp;position: absolute;<br>
+                &nbsp;&nbsp;right: 0;<br>
+                &nbsp;&nbsp;width: 200px;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;background-color: #9cf;<br>
+            }
+        </span>
+    </div>
+    <div class="right">
+        <span>
+            .right {<br>
+                &nbsp;&nbsp;width: 100%;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;padding-right: 200px;<br>
+                &nbsp;&nbsp;background-color: #fcc;<br>
+            }
+        </span>
+    </div>
+</div>
+<div class="twoColumnsLayoutFlexToFixFlexbox">
+    <div class="left">
+        <span>
+            display: flex;<br>
+            .left {<br>
+                &nbsp;&nbsp;flex: 1;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;background-color: #9cf;<br>
+            }
+        </span>
+    </div>
+    <div class="right">
+        <span>
+            .right {<br>
+                &nbsp;&nbsp;width: 200px;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;background-color: #fcc;<br>
+            }
+        </span>
+    </div>
+</div>
+<div class="holyGrailByFloat">
+    <div class="left">
+        <span>
+            .left {<br>
+                &nbsp;&nbsp;float: left;<br>
+                &nbsp;&nbsp;width: 150px;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;background-color: #9cf;<br>
+            }
+        </span>
+    </div>
+    <div class="right">
+        <span>
+            .right {<br>
+                &nbsp;&nbsp;float: right;<br>
+                &nbsp;&nbsp;width: 150px;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;background-color: #fcc;<br>
+            }
+        </span>
+    </div>
+    <div class="middle">
+        <span class="alert">注意：该方法中middle div要放最后</span><br>
+        <span>
+            .middle {<br>
+                &nbsp;&nbsp;width: 100%;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;padding: 0 150px;<br>
+                &nbsp;&nbsp;background-color: #fc9;<br>
+            }
+        </span>
+    </div>
+</div>
+<div class="holyGrailByPosition">
+    <div class="left">
+        <span>
+            position: relative;<br>
+            .left {<br>
+                &nbsp;&nbsp;position: absolute;<br>
+                &nbsp;&nbsp;width: 150px;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;background-color: #9cf;<br>
+            }
+        </span>
+    </div>
+    <div class="right">
+        <span>
+            .middle {<br>
+                &nbsp;&nbsp;width: 100%;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;padding: 0 150px;<br>
+                &nbsp;&nbsp;background-color: #fc9;<br>
+            }
+        </span>
+    </div>
+    <div class="middle">
+        <span>
+            .right {<br>
+                &nbsp;&nbsp;position: absolute;<br>
+                &nbsp;&nbsp;right: 0;<br>
+                &nbsp;&nbsp;width: 150px;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;background-color: #fcc;<br>
+            }
+        </span>
+    </div>
+</div>
+<div class="holyGrailByNegativeMargin">
+    <div class="middle">
+        <span class="alert">注意：该方法middle div要放在第一个</span><br>
+        <span>
+            .left {<br>
+                &nbsp;&nbsp;float: left;<br>
+                &nbsp;&nbsp;width: 150px;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;margin-left: -100%;<br>
+                &nbsp;&nbsp;background-color: #9cf;<br>
+            }
+        </span>
+    </div>
+    <div class="left">
+        <span>
+            .middle {<br>
+                &nbsp;&nbsp;float: left;<br>
+                &nbsp;&nbsp;width: 100%;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;padding: 0 150px;<br>
+                &nbsp;&nbsp;background-color: #fc9;<br>
+            }
+        </span>
+    </div>
+    <div class="right">
+        <span>
+            .right {<br>
+                &nbsp;&nbsp;float: left;<br>
+                &nbsp;&nbsp;width: 150px;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;margin-left: -150px;<br>
+                &nbsp;&nbsp;background-color: #fcc;<br>
+            }
+        </span>
+    </div>
+</div>
+<div class="threeColumnsLayoutFixFixFlexFloat">
+    <div class="left">
+        <span>
+            .left {<br>
+                &nbsp;&nbsp;float: left;<br>
+                &nbsp;&nbsp;width: 150px;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;background-color: #9cf;<br>
+            }
+        </span>
+    </div>
+    <div class="middle">
+        <span>
+            .middle {<br>
+                &nbsp;&nbsp;float: left;<br>
+                &nbsp;&nbsp;width: 100%;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;background-color: #fc9;<br>
+            }
+        </span>
+    </div>
+    <div class="right">
+        <span>
+            .right {<br>
+                &nbsp;&nbsp;width: 100%;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;padding-left: 300px;<br>
+                &nbsp;&nbsp;background-color: #fcc;<br>
+            }
+        </span>
+    </div>
+</div>
+<div class="threeColumnsLayoutFixFixFlexPosition">
+    <div class="left">
+        <span>
+            position: relative;<br>
+            .left {<br>
+                &nbsp;&nbsp;position: absolute;<br>
+                &nbsp;&nbsp;width: 150px;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;background-color: #9cf;<br>
+            }
+        </span>
+    </div>
+    <div class="middle">
+        <span>
+            .middle {<br>
+                &nbsp;&nbsp;position: absolute;<br>
+                &nbsp;&nbsp;width: 150px;<br>
+                &nbsp;&nbsp;left: 150px;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;background-color: #fc9;<br>
+            }
+        </span>
+    </div>
+    <div class="right">
+        <span>
+            .right {<br>
+                &nbsp;&nbsp;float: left;<br>
+                &nbsp;&nbsp;width: 150px;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;margin-left: -150px;<br>
+                &nbsp;&nbsp;background-color: #fcc;<br>
+            }
+        </span>
+    </div>
+</div>
+<div class="threeColumnsLayoutFixFixFlexFlexbox">
+    <div class="left">
+        <span>
+            .middle {<br>
+                &nbsp;&nbsp;float: left;<br>
+                &nbsp;&nbsp;width: 100%;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;padding: 0 150px;<br>
+                &nbsp;&nbsp;background-color: #fc9;<br>
+            }
+        </span>
+    </div>
+    <div class="middle">
+        <span>
+            .left {<br>
+                &nbsp;&nbsp;float: left;<br>
+                &nbsp;&nbsp;width: 150px;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;margin-left: -100%;<br>
+                &nbsp;&nbsp;background-color: #9cf;<br>
+            }
+        </span>
+    </div>
+    <div class="right">
+        <span>
+            .right {<br>
+                &nbsp;&nbsp;float: left;<br>
+                &nbsp;&nbsp;width: 150px;<br>
+                &nbsp;&nbsp;height: 100%;<br>
+                &nbsp;&nbsp;margin-left: -150px;<br>
+                &nbsp;&nbsp;background-color: #fcc;<br>
+            }
+        </span>
+    </div>
+</div>
+</body>
+</html>
