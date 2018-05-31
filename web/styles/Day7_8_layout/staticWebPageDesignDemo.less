@@ -124,26 +124,33 @@ ul, li, table {
 
 .main {
     width: 100%;
-    height: 500px;
+    height: 53%;
     &-content {
         .layoutWidth();
         height: 100%;
         margin: 0 auto;
         display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
+        flex-flow: column wrap;
+        align-items: flex-start;
+        justify-content: space-around;
         div {
-            border: 1px solid @as-border-gray;
-            &:nth-of-type(1), &:nth-of-type(2), &:nth-of-type(3), &:nth-of-type(8), &:nth-of-type(9), &:nth-of-type(10) {
-                //flex: 31%;
-                width: 32%;
-                height: 31%;
+            display: flex;
+            flex: 1;
+            justify-content: space-between;
+            width: 100%;
+            margin: 10px 0;
+            span {
+                flex: 1;
+                display: inline-block;
+                padding: 80px 0;
+                border: 1px solid @as-border-gray;
+                text-align: center;
+                &:nth-of-type(1), &:nth-of-type(2) {
+                    margin-right: 10px;
+                }
             }
-            &:nth-of-type(4), &:nth-of-type(5), &:nth-of-type(6), &:nth-of-type(7) {
-                //flex: 22%;
-                width: 24%;
-                height: 31%;
+            &.second-row span:nth-of-type(3) {
+                margin-right: 10px;
             }
         }
     }
@@ -151,7 +158,7 @@ ul, li, table {
 .footer {
     width: 100%;
     height: 63px;
-    margin-top: 10px;
+    margin-top: 15px;
     padding-top: 10px;
     background-color: #535353;
     &-content {
