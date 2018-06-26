@@ -42,6 +42,9 @@
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
+    &:active {
+        background: linear-gradient(#F2F4F7, @as-white);
+    }
 }
 
 /*
@@ -52,11 +55,14 @@
     display: flex;
     button {
         padding: 5px 8px;
-        border-right: none;
         cursor: pointer;
         background: linear-gradient(@as-white, #F2F4F7);
-        border-color: @as-border-btn-gray;
+        border: 1px solid @as-border-btn-gray;
+        border-right: none;
         outline: none;
+        &:active {
+            background: linear-gradient(#F2F4F7, @as-white);
+        }
         &:first-of-type {
             border-top-left-radius: 3px;
             border-bottom-left-radius: 3px;
@@ -101,6 +107,9 @@
         background: linear-gradient(@as-white, #F2F4F7);
         border: 1px solid @as-border-btn-gray;
         outline: none;
+        &:active {
+            background: linear-gradient(#F2F4F7, @as-white);
+        }
         &:last-child {
             border-top-right-radius: @bdrs;
             border-bottom-right-radius: @bdrs;
