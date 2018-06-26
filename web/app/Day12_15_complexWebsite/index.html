@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>complexWebsite</title>
+    <link rel="stylesheet/less" href="../../styles/Day12_15_complexWebsite/style.less">
+    <script src="../../../components/less.min.js"></script>
+</head>
+<body>
+<div class="nav">
+    <div class="active"><img
+        src="data:image/png;base64,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"
+        alt="nav-icon-plane"></div>
+    <div><img
+        src="data:image/png;base64,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"
+        alt="nav-icon-rocket"></div>
+    <div><img
+        src="data:image/png;base64,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"
+        alt="nav-icon-player"></div>
+    <div><img
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAMAAAANIilAAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABYlBMVEUtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgtOEgAAAAlSlWPAAAAdHRSTlMAD0h8p8jj88kcc8X8Hj6zP0DC/c2TYzwfDBmk/sFmFVXw+ZwlBqgdBw283kMSzK4QrdB3zr1dlXhWG++sQcOm95QW+yRwSeZlZNJ7kn1iICHkE/LnSu3gYbRElr92dc+rqg6+nZua8aXKkAURIsR0xqnu+iAglXgAAAABYktHRHWoapj7AAAACXBIWXMAAAsSAAALEgHS3X78AAAAB3RJTUUH4gYXERsRC7SogAAAAt1JREFUSMell2lb2kAQgCdCFRRBQMQjAVTwKFix1qsqKCo0tLWVYiu1d+2hPbzm/z+dTbCasEsSMl+S3Zk3x8zu7AwAV6Quj/dedw9iT7fP6+mSwLb4e/sCaJBAX2+/LTQYMpFNPjRgiYYjmml0MDYUHx4BGBmOD8UGo9pkJNwWHR1jRrKSSBrnkwlFZpqxUTGbGieDick0T5eenCDleEqAZmLs4VNCz0x7mT42w9PN3idVNtfur3JZMlHmWhXJB6SYz7d3Z36BjB4mzdPSIDlqESxlkRz3yLRmMksUyWVrFmCZVsFSxjC1Qu9N2GEBEvTulbsTKfqVVXsswCoZr90OH68jLthlATYQ1/3/R/MUIwcbR6KIzd8MNuk7cvZZivcdoIBYdMICFBEL+l0QcWvaGTy9hRjU7kKI285YgG3EELuWdlBOO4V3Zdwp0XWPdrnApFyplAUqBXFPd9cTgUUFsSJQqZrLpADKJYEF278CVUnGgARlxCo4h6GKWIaniM86gSntPIcpxKFO4H3KWOBDjHcCxxF90I34ohP4JeIB0Hk0a1aUK+bzojXeNcRXwHt4C8uJd4aBNuE6B55gnz1iVhzWzezBIeezX7tx2Bt3oaJFctQJfMQWicfN8nS1MVxsybyWDFSBRYUT36boyYClIUVgcVhvjW9TmmmIJcBdcCg3CRAaVCs4hcnXDe2GJX2/M/Y26bs6bgznli1hwNubgZsjFvx0uG/Yh42HO6y5KCsAjqmgUe2xKhU0x4aZzDsnpZRiLKWgRrtEfm/NfqD3Vmvm2dJH+pVP+fZo/jMZVTmb8MtXVrgG27FBVrhG5niqmW1WqJ8IV6r/hBXsKzMCtV6sf+MX699Zsf4jJf6u0Z96m6CaXFJT9Tah2KZNIAkX9F7m9ExrUH79/hPfP/Pp/c7fTbCSgUaU1xpFGwOWKJP+8wtzU3Zxbq8p04TawcvT7NX19VX29FLYDv4DxfgWme3z3ucAAAAASUVORK5CYII="
+        alt="nav-icon-addapp"></div>
+    <div class="nav-footer">
+        <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEVHU2RHU2RHU2RHU2QAAAAxdpGyAAAAA3RSTlMAw8SGqEb6AAAAAWJLR0QEj2jZUQAAAAlwSFlzAAALEgAACxIB0t1+/AAAAAd0SU1FB+IGFxEbAo8K6V4AAAAvSURBVAjXYxA2NhZgNDY2ZDA2NjZgBhIMxgzMBswGDFgZMDVAXQpAXUYMmIAyAwEzlQ8DC21lxAAAAABJRU5ErkJggg=="
+            alt="nav-icon-grid">
+        <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAZlBMVEVHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2RHU2QAAADs/0aMAAAAIHRSTlMAF8Anwb3tQmRBvj4r/Sxn+W4SEcNvd8J2Zvw9Q8ZlKGpB1AkAAAABYktHRCHEbA0WAAAACXBIWXMAAAsSAAALEgHS3X78AAAAB3RJTUUH4gYXERsmswkNjwAAAH1JREFUGNNlj+kSgyAQgxdFvEXxam3VvP9TuoB0quYHxzeTbJbIC6AgEcUBxFLwmUClmQRklisUDEqFn1RpPVUd/nXjQjTQdqbvWkA7MACjvSdgcPEsY4Fxzycgmk/Ly1uI3ja0/wutluvYz70YV//qlatvqa8u5H5d7rb+AbTKDtucK/wfAAAAAElFTkSuQmCC"
+            alt="nav-icon-setting">
+    </div>
+</div>
+<div class="menu">
+    <div class="menu-items">
+        <dl>
+            <dt>MENU</dt>
+            <dd>Overview</dd>
+            <dd>Sales</dd>
+            <dd>Your Staff</dd>
+            <dd>Analytics & Targeting</dd>
+            <dd>What's New</dd>
+            <dd></dd>
+        </dl>
+        <dl>
+            <dt>YOUR PRODUCTS</dt>
+            <dd>Books</dd>
+            <dd>Tutorials</dd>
+            <dd>Stocks</dd>
+            <dd>Infographics</dd>
+            <dd></dd>
+        </dl>
+        <dl>
+            <dt>DASHBOARD</dt>
+            <dd class="menu-active">Messages</dd>
+            <dd>Connections</dd>
+            <dd class="alert">Integrations</dd>
+            <dd>Account Settings</dd>
+            <dd>App Settins</dd>
+            <dd></dd>
+        </dl>
+    </div>
+    <div class="menu-goals">
+        <span>Monthly Goals</span>
+        <span>$580/$3200</span>
+        <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAL4AAAAEBAMAAADCC5i9AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAD1BMVEVHU2RHU2RHU2RHU2QAAAAxdpGyAAAABHRSTlMWRU1Gatj0HwAAAAFiS0dEBI9o2VEAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQfiBhgBBADoGzXKAAAAHUlEQVQY02NgVKIlEGAQoqn5ijQ2X5mBmabmCwAAbicx9WT1A/gAAAAASUVORK5CYII="
+            alt="menu-goal-base">
+        <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAECAMAAADLTo0SAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABR1BMVEV/W+Z/XOacjeOdj+N/W+adjuOdjuN/W+Z/W+acjuOdj+OAXeaBXuWBYOWCYeaDYuaEYuWEZOWFZeaGZ+WHaeWHaeaIa+WJbeWKb+WLcOWNcuWNc+WOdeWPd+SQeOSReuSRe+SSfeSTf+SVgOSVguSWhOOXhOSYhuSYh+SZiOSaiuOai+ScjOOcjeN/XOaAXOaAXuWBXuaCX+WCYeWEY+aEZOaFZeWHaOWHauWJbOWLbuWMcuSNc+SPd+WQeOWSfOSTfeSUgOSWg+SWhOSXhuSYiOSZiOOai+ObjOObjeR/W+aBXeWBX+aCX+aFZOaFZ+WGaOWIauWLb+WLceWNdOWOdeSQeeSQeuSUf+SXheSZh+SZieOZiuObjOScjuOCYOaDYuWEY+WFZuWKbuWPduSRfOSUgOOXheOYhuOYiOOaiOObjeMAAACyyknsAAAAC3RSTlNJ5uZJ5ubnSufkSreZTWMAAAABYktHRGzMATA7AAAACXBIWXMAAAsSAAALEgHS3X78AAAAB3RJTUUH4gYYAQM4j1gbkwAAAKpJREFUCNdjYGDk5ubh5eMXEBQSFhEVE5eQlJKWkZWTV1BUUlZRVVPX0NTS1tFlYmZg0dM3MDTiMzYxNRM2t7C0tJK0tpGxtZO3d1ByVHFydnF103L38NRlZWDx0vf28eXj4/cT8g8IFBMPCrYOCZUNC7d3iAAqjFSPio7RjtWNY2Ng5+Dm9vGJT0gUTBI2BypMlrSWDk2Rk09VVEpTcUrPyMzS0vbI5uQCACPIHlE8PpwpAAAAAElFTkSuQmCC"
+            alt="menu-goal-fill">
+    </div>
+</div>
+<div class="main">
+    <div class="main-header">
+        <span class="title">Messages</span>
+        <div class="personal-info">
+            <img src="../../img/Day12_15_complexWebsite/12_15-assets/jordan_with_status.png" alt="main-header-photo">
+            <div class="name-and-job">
+                <span>Jordan J.</span>
+                <span>Administrator</span>
+            </div>
+            <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAHCAMAAADpsEdvAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAY1BMVEW/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9i/x9gAAAB3p4zOAAAAH3RSTlMAwtIPy8y9Btcc46wDAaTpJC3wmxKQQvlT/P5bZO1vUYLh2gAAAAFiS0dEILNrPYAAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQfiBhgQHTfWQvCaAAAAR0lEQVQI1y2LSRaAIBTDKijgLKjg3PvfUr+PbJpFg0JpCFqVqGjsp9bQoW7YdugHjhPgA+dlZfDyjIlkin+FbedxInPdj8wLgQsDaq2NX0QAAAAASUVORK5CYII="
+                style="width: 11px; height: 7px;" alt="dropdown">
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="friends">
+            <div class="friends-search">
+                <input type="text" placeholder="Search">
+            </div>
+            <div class="friends-list">
+                <ul>
+                    <li class="friends-active">
+                        <div class="friends-info">
+                            <img src="../../img/Day12_15_complexWebsite/12_15-assets/bessie.png" alt="avatar">
+                            <span class="friends-info-detail">
+                                <i class="asfont icon-circle-s"></i>
+                                <span>Bessie Berry</span><br>
+                                <span>Twitter</span>
+                            </span>
+                            <span class="last-info-time">3m</span>
+                        </div>
+                        <div class="friends-info-brif">
+                            <span>I pay for the 4Mb/sec down, 512 Kb/sec up service from O2.
+                            In fact, it's relatively quick and stable...</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="friends-info">
+                            <img src="../../img/Day12_15_complexWebsite/12_15-assets/victor.png" alt="avatar">
+                            <span class="friends-info-detail">
+                                <i class="asfont icon-circle-s"></i>
+                                <span>Victor Weber</span><br>
+                                <span>Adobe</span>
+                            </span>
+                            <span class="last-info-time">8m</span>
+                        </div>
+                        <div class="friends-info-brif">
+                            <span>I shared this on my fb wall a few months back,
+                                and I thought I'd share it here again because
+                                it's such a great...</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="friends-info">
+                            <img src="../../img/Day12_15_complexWebsite/12_15-assets/dustin.png" alt="avatar">
+                            <span class="friends-info-detail">
+                                <i class="asfont icon-circle-s"></i>
+                                <span>Dustin Benson</span><br>
+                                <span>Facebook</span>
+                            </span>
+                            <span class="last-info-time">Yesterday</span>
+                        </div>
+                        <div class="friends-info-brif">
+                            <span>If there is anyone who needs an invitation please add yourself
+                                in the comments of this post!</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="friends-info">
+                            <img src="../../img/Day12_15_complexWebsite/12_15-assets/jack.png" alt="avatar">
+                            <span class="friends-info-detail">
+                                <i class="asfont icon-circle-s"></i>
+                                <span>Jack Mason</span><br>
+                                <span>Yahoo</span>
+                            </span>
+                            <span class="last-info-time">Yesterday</span>
+                        </div>
+                        <div class="friends-info-brif">
+                            <span>BruteDC is a peer-to-peer movie+tv series sharing and
+                                downloading platform which works on intranet inside...</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="friends-info">
+                            <img src="../../img/Day12_15_complexWebsite/12_15-assets/stephen.png" alt="avatar">
+                            <span class="friends-info-detail">
+                                <i class="asfont icon-circle-s"></i>
+                                <span>Stephen Shelton</span><br>
+                                <span>Snapchat</span>
+                            </span>
+                            <span class="last-info-time">13 Jun</span>
+                        </div>
+                        <div class="friends-info-brif">
+                            <span>Yes, p2p traffic is often filtered (QoSed). Although i do
+                                use BT on O2 wires, and in good days dl speed...</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="friends-info">
+                            <img src="../../img/Day12_15_complexWebsite/12_15-assets/sally.png" alt="avatar">
+                            <span class="friends-info-detail">
+                                <i class="asfont icon-circle-s"></i>
+                                <span>Sally Willis</span><br>
+                                <span>Twitter</span>
+                            </span>
+                            <span class="last-info-time">12 Jun</span>
+                        </div>
+                        <div class="friends-info-brif">
+                            <span>Yes, it's O2: 'internet extreme', which is no longer offered.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="friends-info">
+                            <img src="../../img/Day12_15_complexWebsite/12_15-assets/robert.png" alt="avatar">
+                            <span class="friends-info-detail">
+                                <i class="asfont icon-circle-s"></i>
+                                <span>Robert Patton</span><br>
+                                <span>A Team</span>
+                            </span>
+                            <span class="last-info-time">9 Jun</span>
+                        </div>
+                        <div class="friends-info-brif">
+                            <span>I change my service from this 4Mb plan to their much cheaper 8M...</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="msg">
+            <div class="msg-header">
+                <span>
+                    Bessie Berry
+                    <i class="asfont icon-circle-s"></i>
+                </span>
+                <div class="msg-func-btns pull-right">
+                    <div class="btn-group">
+                        <button><i class="asfont icon-adduser"></i></button>
+                        <button><i class="asfont icon-upload"></i></button>
+                        <button><i class="asfont icon-delete-s"></i></button>
+                    </div>
+                    <div class="divider-col"></div>
+                    <span class="msg-num">1 of 28</span>
+                    <div class="btn-group">
+                        <button><i class="asfont icon-triangle-left"></i></button>
+                        <button><i class="asfont icon-triangle-right"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="msg-list">
+                <ul>
+                    <li>
+                        <div class="recieve">
+                            <img src="../../img/Day12_15_complexWebsite/12_15-assets/bessie.png" alt="avatar">
+                            <div class="dialog">
+                                <span>Bessie Berry</span>
+                                <span>8:31AM</span>
+                                <p>
+                                    Hi guys Ive got the O2 package and have really slow internet.
+                                    AHi guys Ive got the O2 package and have really slow internet.
+                                    A speed check online said i can get 3mbps but it seems more
+                                    like 0.5 these days, just freezing and taking ages to open
+                                    pages and open audio files for example. I have decided to
+                                    switch to the UPC package which offers 10mbps but do you think
+                                    i will get it?
+                                </p>
+                            </div>
+                        </div>
+                        <div class="response">
+                            <img src="../../img/Day12_15_complexWebsite/12_15-assets/jordan.png" alt="avatar">
+                            <div class="dialog">
+                                <span>Jordan Jackson</span>
+                                <span>8:31AM</span>
+                                <p>
+                                    I have internet for 9 month and nevere could benefit from the
+                                    full capacity of 5Mbit/s as it is filtered by O2 when it
+                                    detect traffic on public p2p sharing in my situation all my
+                                    internet speed slows to 512Kbit/s. I never had 400KB/s on when
+                                    downloading from p2p public servers like torrent emule etc.
+                                    I downoad with 500KB/s from private trakers instead. So
+                                    conlcusion O2 block trafic on p2p connections. I have made
+                                    hundreds of test in Italy and Sweden and Romania with the same
+                                    file to doanload with the same setting and same antivirus and
+                                    just needed to open ports in firewall and forward same ports
+                                    and the speed was at full capacity in 1 minute. here in 9
+                                    month never had this luck.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                    <div class="msg-divider">
+                        <span class="msg-divider-words">
+                            Tuesday
+                        </span>
+                        <div class="msg-divider-line"></div>
+                    </div>
+                    <li>
+                        <div class="recieve">
+                            <img src="../../img/Day12_15_complexWebsite/12_15-assets/bessie.png" alt="avatar">
+                            <div class="dialog">
+                                <span>Bessie Berry</span>
+                                <span>8:31AM</span>
+                                <p>
+                                    Funny comparison. so would the proper antivirus not slow down
+                                    the internet as much or do you mean a freebie doenst protect
+                                    the computer from viruses?
+                                </p>
+                            </div>
+                        </div>
+                        <div class="response">
+                            <img src="../../img/Day12_15_complexWebsite/12_15-assets/jordan.png" alt="avatar">
+                            <div class="dialog">
+                                <span>Jordan Jackson</span>
+                                <span>8:31AM</span>
+                                <p>
+                                    I pay for the 4Mb/sec down, 512 Kb/sec up service from O2,
+                                    and haven't had any problems. In fact, it's relatively quick,
+                                    and stable. It's not perfect, but I really don't have issues,
+                                    as long as I keep track of what I'm doing on it. I max out at
+                                    about 3 Mb/sec down, and 350 Kb/sec up. Probably because of a
+                                    noisy telephone line, not because I'm being throttled. When my
+                                    uploads go over 25 KB/sec (note, bytes, not bits), my download
+                                    speed suffers. This is expected, as downloads require upload
+                                    bandwidth as well.
+                                </p>
+                                <div class="photo">
+                                    <div class="photo-mask">
+                                        <div class="enlarge">
+                                            <i class="asfont icon-search-plus"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="photo">
+                                    <div class="photo-mask">
+                                        <div class="enlarge">
+                                            <i class="asfont icon-search-plus"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <div class="msg-divider">
+                        <span class="msg-divider-words">
+                            Friday
+                        </span>
+                        <div class="msg-divider-line"></div>
+                    </div>
+                    <li>
+                        <div class="recieve">
+                            <img src="../../img/Day12_15_complexWebsite/12_15-assets/bessie.png" alt="avatar">
+                            <div class="dialog">
+                                <span>Bessie Berry</span>
+                                <span>8:31AM</span>
+                                <p>
+                                    Funny comparison. so would the proper antivirus not slow down
+                                    the internet as much or do you mean a freebie doenst protect
+                                    the computer from viruses?
+                                </p>
+                            </div>
+                        </div>
+                        <div class="response">
+                            <img src="../../img/Day12_15_complexWebsite/12_15-assets/jordan.png" alt="avatar">
+                            <div class="dialog">
+                                <span>Jordan Jackson</span>
+                                <span>8:31AM</span>
+                                <p>
+                                    I pay for the 4Mb/sec down, 512 Kb/sec up service from O2,
+                                    and haven't had any problems. In fact, it's relatively quick,
+                                    and stable. It's not perfect, but I really don't have issues,
+                                    as long as I keep track of what I'm doing on it. I max out at
+                                    about 3 Mb/sec down, and 350 Kb/sec up. Probably because of a
+                                    noisy telephone line, not because I'm being throttled. When my
+                                    uploads go over 25 KB/sec (note, bytes, not bits), my download
+                                    speed suffers. This is expected, as downloads require upload
+                                    bandwidth as well.
+                                </p>
+                                <div class="photo">
+                                    <div class="photo-mask">
+                                        <div class="enlarge">
+                                            <i class="asfont icon-search-plus"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="photo">
+                                    <div class="photo-mask">
+                                        <div class="enlarge">
+                                            <i class="asfont icon-search-plus"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <div class="msg-divider">
+                        <span class="msg-divider-words msg-new">
+                            New Messages
+                        </span>
+                        <div class="msg-divider-line msg-new"></div>
+                    </div>
+                    <li>
+                        <div class="recieve">
+                            <img src="../../img/Day12_15_complexWebsite/12_15-assets/bessie.png" alt="avatar">
+                            <div class="dialog">
+                                <span>Bessie Berry</span>
+                                <span>8:31AM</span>
+                                <p>
+                                    I pay for the 4Mb/sec down, 512 Kb/sec up service from O2.
+                                    In fact, it's relatively quick, and stable. It's not perfect,
+                                    but I really don't have issues, as long as I keep track of
+                                    what I'm doing on it.
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="msg-input input-group">
+                <button><i class="asfont icon-add"></i></button>
+                <input type="text" placeholder="Message">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
