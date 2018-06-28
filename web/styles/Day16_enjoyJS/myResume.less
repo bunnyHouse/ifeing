@@ -1,3 +1,5 @@
+@import "../common/components";
+
 .init() {
     margin: 0;
     padding: 0;
@@ -18,7 +20,19 @@ ul {
 
 .container {
     .setSize(1000px, 100%);
+    position: relative;
     margin: 0 auto;
+    .interact {
+        position: absolute;
+        top: 20px;
+        right: 0;
+        .input-group {
+            .as-input-group();
+        }
+        #interact-greet {
+            float: right;
+        }
+    }
     .title {
         text-align: center;
         margin: 15px auto;
