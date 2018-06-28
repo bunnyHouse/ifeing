@@ -1,0 +1,80 @@
+.init() {
+    margin: 0;
+    padding: 0;
+}
+
+.setSize(@width: 100%, @height: 100%) {
+    width: @width;
+    height: @height;
+}
+
+body, h1, h2, h3, h4, h5, h6, img, a, ul, ol, li, p, hr, table, tr, td {
+    .init;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    .setSize(1000px, 100%);
+    margin: 0 auto;
+    .title {
+        text-align: center;
+        margin: 15px auto;
+    }
+    .baseInfo {
+        .setSize(100%, 230px);
+        img {
+            .setSize(140px, 190px);
+            float: right;
+        }
+        h3, ul {
+            margin: 15px 0 0 90px;
+        }
+    }
+    .eduInfo {
+        .setSize(100%, 150px);
+        table {
+            .setSize(70%, 110px);
+            margin: 0 auto;
+            text-align: center;
+            thead {
+                font-size: 20px;
+                font-weight: bold;
+            }
+        }
+    }
+    .jobInfo {
+        .setSize(100%, 430px);
+        dl {
+            margin: 20px 0 10px 75px;
+            dt {
+                margin: 5px 0 10px 15px;
+            }
+        }
+    }
+    .campExcer {
+        .setSize(100%, 110px);
+        ul {
+            .setSize(80%, 60px);
+            margin: 10px auto;
+        }
+    }
+    .certificate {
+        .setSize(100%, 280px);
+        ul {
+            .setSize(80%, 230px);
+            margin: 10px auto;
+            list-style: disc;
+        }
+    }
+    .selfEvaluation {
+        .setSize(100%, 80px);
+        p {
+            .setSize(80%, 20px);
+            display: block;
+            margin: 15px auto;
+        }
+    }
+}
