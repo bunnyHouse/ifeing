@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 480px;
+            height: 480px;
+            margin: 0 auto;
+            background: #000 url("../../img/Day20_21_dialogWithPage/erik_ce204002.jpg") no-repeat;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+<script>
+    var i = 0;
+    var div = document.querySelector('div');
+    setInterval(function () {
+        if (i % 34 < 17) {
+            div.style.backgroundPositionY = '-' + (i % 17) * 480 + 'px';
+        } else if (i % 34 > 17) {
+            div.style.backgroundPositionY = '-' + (17 - (i % 17)) * 480 + 'px';
+        }
+        console.log(i);
+        console.log(div.style.backgroundPositionY);
+        i++;
+    }, 80);
+</script>
+</body>
+</html>
