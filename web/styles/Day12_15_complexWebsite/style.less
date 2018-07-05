@@ -58,17 +58,27 @@ a {
 }
 
 //第二列主菜单
-.menu {
-    overflow: auto;
+.menu-outer {
+    position: relative;
+    overflow: hidden;
     float: left;
     width: 250px;
     height: 100%;
     margin-left: 100px;
+}
+.menu {
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    position: absolute;
+    overflow-y: scroll;
+    width: 250px;
+    height: 100%;
     background-color: #222C3C;
     font-size: 14px;
     color: @as-white;
     &-items {
-        width: 100%;
+        width: 250px;
         height: 100%;
         margin: 0 auto;
         dl {
