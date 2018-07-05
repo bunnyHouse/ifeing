@@ -79,7 +79,7 @@ a {
     color: @as-white;
     &-items {
         width: 250px;
-        height: 100%;
+        height: calc(100% - 5px);
         margin: 0 auto;
         dl {
             width: 100%;
@@ -127,6 +127,9 @@ a {
                     margin: 0 auto;
                     padding: 10px 0 0 0;
                     border-bottom: 1px solid #2A3547;
+                    &:hover {
+                        background-color: #222C3C;
+                    }
                 }
             }
             &:first-of-type dd:nth-of-type(2):after {
