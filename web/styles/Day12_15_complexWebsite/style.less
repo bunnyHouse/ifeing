@@ -59,6 +59,7 @@ a {
 
 //第二列主菜单
 .menu {
+    overflow: auto;
     float: left;
     width: 250px;
     height: 100%;
@@ -153,10 +154,12 @@ a {
     }
     &-goals {
         position: fixed;
-        width: 190px;
-        height: 35px;
-        left: 130px;
-        bottom: 20px;
+        width: 250px;
+        height: 60px;
+        left: 100px;
+        bottom: 0;
+        padding: 5px 30px 0;
+        background-color: #1D2531;
         span {
             &:first-of-type {
                 float: left;
@@ -167,8 +170,8 @@ a {
         }
         img {
             &:last-of-type {
-                position: absolute;
-                bottom: 0;
+                position: fixed;
+                bottom: 20px;
             }
         }
     }
