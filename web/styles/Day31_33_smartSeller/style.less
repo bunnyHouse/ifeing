@@ -1,0 +1,22 @@
+@import url('../common/initialization');
+@import url('../common/color');
+
+#table-wrapper {
+    table {
+        border-collapse: collapse;
+        td {
+            padding: 2px 10px;
+            text-align: center;
+        }
+        thead {
+            td {
+                background-color: @as-gray-lighter;
+            }
+        }
+        tbody {
+            tr {
+                border-bottom: 1px solid @as-gray-lighter;
+            }
+        }
+    }
+}
