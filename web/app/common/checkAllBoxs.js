@@ -9,37 +9,68 @@
 *       }, {}]
 * */
 function createCheckAllBoxs(wrapper, data, options) {
-    //画出全选钮
-    var checkAllSpan = document.createElement('label');
-    var checkAll = document.createElement('input');
-    checkAll.setAttribute('type', 'checkbox');
-    checkAll.setAttribute('checkbox-type', 'all');
-    if (options.name) {
-        checkAll.setAttribute('name', options.name);
-    }
-    var text = document.createTextNode('全选');
-    checkAllSpan.appendChild(checkAll);
-    checkAllSpan.appendChild(text);
-    wrapper.appendChild(checkAllSpan);
+    createTitle();
+    var checkAll = createCheckAll();
+    var checkItems = createCheckItem();
     
-    //画出单选钮
-    var checkItems = [];    //所有单选框
-    for (var i = 0; i < data.length; i++) {
-        var item = data[i];
-        var checkItemSpan = document.createElement('label');
-        var checkItem = document.createElement('input');
-        checkItem.setAttribute('type', 'checkbox');
-        checkItem.setAttribute('checkbox-type', 'item');
-        if (options.name) {
-            checkItem.setAttribute('name', options.name);
+    //标题
+    function createTitle() {
+        if (options.title) {
+            var titleSpan = document.createElement('span');
+            titleSpan.innerHTML = options.title + ' : ';
+            wrapper.appendChild(titleSpan);
         }
-        checkItem.value = item.value;
-        var text = document.createTextNode(item.text);
-        checkItemSpan.appendChild(checkItem);
-        checkItemSpan.appendChild(text);
-        wrapper.appendChild(checkItemSpan);
-        checkItems.push(checkItem);
     }
+    
+    /*
+    画出全选钮
+    返回全选钮对象
+    */
+    function createCheckAll() {
+        var checkAllSpan = document.createElement('label');
+        var checkAll = document.createElement('input');
+        checkAll.setAttribute('type', 'checkbox');
+        checkAll.setAttribute('checkbox-type', 'all');
+        if (options.name) {
+            checkAll.setAttribute('name', options.name);
+        }
+        var text = document.createTextNode('全选');
+        checkAllSpan.appendChild(checkAll);
+        checkAllSpan.appendChild(text);
+        wrapper.appendChild(checkAllSpan);
+        return checkAll;
+    }
+    
+    /*
+    画出单选钮
+    返回单选钮对象数组
+    */
+    function createCheckItem() {
+        var checkItems = [];    //所有单选框
+        for (var i = 0; i < data.length; i++) {
+            var item = data[i];
+            var checkItemSpan = document.createElement('label');
+            var checkItem = document.createElement('input');
+            checkItem.setAttribute('type', 'checkbox');
+            checkItem.setAttribute('checkbox-type', 'item');
+            checkItem.checked = item.checked;
+            if (options.name) {
+                checkItem.setAttribute('name', options.name);
+            }
+            checkItem.value = item.value;
+            var text = document.createTextNode(item.text);
+            checkItemSpan.appendChild(checkItem);
+            checkItemSpan.appendChild(text);
+            wrapper.appendChild(checkItemSpan);
+            checkItems.push(checkItem);
+        }
+        var checkedItems = getCheckedItems(checkItems);
+        if (checkedItems.length === data.length) {
+            checkAll.checked = true;
+        }
+        return checkItems;
+    }
+    
     
     //点击全选框时的效果
     checkAll.addEventListener('change', function(e) {
@@ -57,7 +88,7 @@ function createCheckAllBoxs(wrapper, data, options) {
     })
     
     //获取所有被选中的项
-    function getCheckedItems() {
+    function getCheckedItems(checkItems) {
         var checkedItems = [];
         for (var i = 0; i < checkItems.length; i++) {
             if (checkItems[i].checked) {
@@ -74,7 +105,7 @@ function createCheckAllBoxs(wrapper, data, options) {
     
     //至少保留一个选项被选择
     function preventLast() {
-        var checkedItems = getCheckedItems();
+        var checkedItems = getCheckedItems(checkItems);
         if (options.preventLast && checkedItems.length === 1)  {
             //todo 能否不用disabled而用其他方式替代
             checkedItems[0].disabled = 'disabled';
@@ -91,7 +122,7 @@ function createCheckAllBoxs(wrapper, data, options) {
         item.addEventListener('change', function() {
             preventLast();
             //对全选框的影响
-            var checkedItems = getCheckedItems();
+            var checkedItems = getCheckedItems(checkItems);
             checkAll.checked = checkedItems.length === checkItems.length;
         })
     }

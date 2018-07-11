@@ -16,14 +16,16 @@ function initRegionSelect() {
             regionsObj[reg.region] = reg.region;
             regionsArr.push({
                 value: reg.region,
-                text: reg.region
+                text: reg.region,
+                checked: true
             });
         }
     }
     var options = {
         preventLast: true,
         disableUnCheckAll: true,
-        name : 'regionSelect'
+        name : 'regionSelect',
+        title: '地区'
     };
     createCheckAllBoxs(regionSelect, regionsArr, options);
 }
@@ -38,14 +40,16 @@ function initProductSelect() {
             productObj[reg.product] = reg.product;
             productArr.push({
                 value: reg.product,
-                text: reg.product
+                text: reg.product,
+                checked: true
             });
         }
     }
     var options = {
         preventLast: true,
         disableUnCheckAll: true,
-        name: 'productSelect'
+        name: 'productSelect',
+        title: '商品'
     };
     createCheckAllBoxs(productSelect, productArr, options);
 }
