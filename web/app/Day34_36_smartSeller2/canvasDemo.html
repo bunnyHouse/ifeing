@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function draw() {
+            var canvas = document.getElementById('tutorial');
+            if (canvas.getContext) {
+                var ctx = canvas.getContext('2d');
+                ctx.fillStyle = "rgb(200, 0, 0)";
+                ctx.fillRect(10, 10, 50, 50);
+                ctx.fillStyle = "rgba(0, 0, 200, .5)";
+                ctx.fillRect(30, 30, 50, 50);
+            }
+            var rectDemo = document.getElementById('rectDemo');
+            if (rectDemo.getContext) {
+                var ctx = rectDemo.getContext('2d');
+                ctx.fillRect(25, 25, 100, 100);
+                ctx.clearRect(45, 45, 60, 60);
+                ctx.strokeRect(50, 50, 50, 50);
+            }
+            var triDemo = document.getElementById('triDemo');
+            if (triDemo.getContext) {
+                var ctx = triDemo.getContext('2d');
+                ctx.beginPath();
+                ctx.moveTo(50, 75);
+                ctx.lineTo(100, 125);
+                ctx.lineTo(100, 25);
+                ctx.fill();
+            }
+            var smileFace = document.getElementById('smileFace');
+            if (smileFace.getContext) {
+                var ctx = smileFace.getContext('2d');
+                ctx.beginPath();
+                ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // 绘制
+                ctx.moveTo(110, 75);
+                ctx.arc(75, 75, 35, 0, Math.PI, false);   // 口(顺时针)
+                ctx.moveTo(65, 65);
+                ctx.arc(60, 65, 5, 0, Math.PI * 2, true);  // 左眼
+                ctx.moveTo(95, 65);
+                ctx.arc(90, 65, 5, 0, Math.PI * 2, true);  // 右眼
+                ctx.stroke();
+            }
+            var twoTri = document.getElementById('twoTri');
+            if (twoTri.getContext) {
+                var ctx = twoTri.getContext('2d');
+                ctx.beginPath();
+                ctx.moveTo(25, 25);
+                ctx.lineTo(105, 25);
+                ctx.lineTo(25, 105);
+                ctx.fill();
+                
+                ctx.beginPath();
+                ctx.moveTo(45, 125);
+                ctx.lineTo(125, 45);
+                ctx.lineTo(125, 125);
+                ctx.closePath();
+                ctx.stroke();
+            }
+            var arcDemo = document.getElementById('arcDemo');
+            if (arcDemo.getContext) {
+                var ctx = arcDemo.getContext('2d');
+                for (var i = 0; i < 4; i++) {
+                    for (var j = 0; j < 3; j++) {
+                        ctx.beginPath();
+                        var x = 25 + 50 * j;
+                        var y = 25 + 50 * i;
+                        var r = 20;
+                        var startArc = 0;
+                        var endArc = Math.PI + (Math.PI * j) / 2;
+                        var anticlockwise = i % 2 === 0 ? false : true;
+                        ctx.arc(x, y, r, startArc, endArc, anticlockwise);
+                        if (i > 1) {
+                            ctx.fill();
+                        } else {
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+            var path2dDemo = document.getElementById('path2dDemo');
+            if (path2dDemo.getContext) {
+                var ctx = path2dDemo.getContext('2d');
+                var rectangle = new Path2D();
+                rectangle.rect(10, 10, 50, 50);
+                
+                var circle = new Path2D();
+                circle.moveTo(125, 35);
+                circle.arc(100, 35, 25, 0, 2 * Math.PI);
+                
+                ctx.stroke(rectangle);
+                ctx.fill(circle);
+            }
+            var colorBord = document.getElementById('colorBord');
+            if (colorBord.getContext) {
+                var ctx = colorBord.getContext('2d');
+                for (var i = 0; i < 6; i++) {
+                    for (var j = 0; j < 6; j++) {
+                        ctx.fillStyle = 'rgb(' + Math.floor(255 - 42.5 * i) + ',' +
+                            Math.floor(255 - 42.5 * j) + ',0)';
+                        ctx.fillRect(10 + j * 25, 10 + i * 25, 25, 25);
+                    }
+                }
+            }
+            var corlorfulCircle = document.getElementById('corlorfulCircle');
+            if (corlorfulCircle.getContext) {
+                var ctx = corlorfulCircle.getContext('2d');
+                for (var i=0;i<6;i++){
+                    for (var j=0;j<6;j++){
+                        ctx.strokeStyle = 'rgb(0,' + Math.floor(255-42.5*i) + ',' +
+                            Math.floor(255-42.5*j) + ')';
+                        ctx.beginPath();
+                        ctx.arc(22.5+j*25,22.5+i*25,10,0,Math.PI*2,true);
+                        ctx.stroke();
+                    }
+                }
+            }
+            var alphaDemo = document.getElementById('alphaDemo');
+            if (alphaDemo.getContext) {
+                var ctx = alphaDemo.getContext('2d');
+                // 画背景
+                ctx.fillStyle = '#FD0';
+                ctx.fillRect(10,10,75,75);
+                ctx.fillStyle = '#6C0';
+                ctx.fillRect(85,10,75,75);
+                ctx.fillStyle = '#09F';
+                ctx.fillRect(10,85,75,75);
+                ctx.fillStyle = '#F30';
+                ctx.fillRect(85,85,75,75);
+                ctx.fillStyle = '#FFF';
+    
+                // 设置透明度值
+                ctx.globalAlpha = 0.2;
+    
+                // 画半透明圆
+                for (var i=0;i<7;i++){
+                    ctx.beginPath();
+                    ctx.arc(85,85,10+10*i,0,Math.PI*2,true);
+                    ctx.fill();
+                }
+            }
+            var rgbaDemo = document.getElementById('rgbaDemo');
+            if (rgbaDemo.getContext) {
+                var ctx = rgbaDemo.getContext('2d');
+                // 画背景
+                ctx.fillStyle = 'rgb(255,221,0)';
+                ctx.fillRect(10,10,150,37.5);
+                ctx.fillStyle = 'rgb(102,204,0)';
+                ctx.fillRect(10,47.5,150,37.5);
+                ctx.fillStyle = 'rgb(0,153,255)';
+                ctx.fillRect(10,85,150,37.5);
+                ctx.fillStyle = 'rgb(255,51,0)';
+                ctx.fillRect(10,122.5,150,37.5);
+    
+                // 画半透明矩形
+                for (var i=0;i<10;i++){
+                    ctx.fillStyle = 'rgba(255,255,255,'+(i+1)/10+')';
+                    for (var j=0;j<4;j++){
+                        ctx.fillRect(15+i*14,15+j*37.5,14,27.5)
+                    }
+                }
+            }
+            var lineWidthDemo = document.getElementById('lineWidthDemo');
+            if (lineWidthDemo.getContext) {
+                var ctx = lineWidthDemo.getContext('2d');
+                for (var i = 0; i < 10; i++){
+                    ctx.lineWidth = 1+i;
+                    ctx.beginPath();
+                    //了解半渲染像素点问题
+                    ctx.moveTo(20+i*14,20);
+                    ctx.lineTo(20+i*14,155);
+                    // ctx.moveTo(20.5+i*14,20);
+                    // ctx.lineTo(20.5+i*14,155);
+                    ctx.stroke();
+                }
+            }
+            var lineCapDemo = document.getElementById('lineCapDemo');
+            if (lineCapDemo.getContext) {
+                var ctx = lineCapDemo.getContext('2d');
+                var lineCap = ['butt','round','square'];
+    
+                // 创建路径
+                ctx.strokeStyle = '#09f';
+                ctx.beginPath();
+                ctx.moveTo(20,20);
+                ctx.lineTo(150,20);
+                ctx.moveTo(20,150);
+                ctx.lineTo(150,150);
+                ctx.stroke();
+    
+                // 画线条
+                ctx.strokeStyle = 'black';
+                for (var i=0;i<lineCap.length;i++){
+                    ctx.lineWidth = 15;
+                    ctx.lineCap = lineCap[i];
+                    ctx.beginPath();
+                    ctx.moveTo(35+i*50,20);
+                    ctx.lineTo(35+i*50,150);
+                    ctx.stroke();
+                }
+            }
+            var lineJoinDemo = document.getElementById('lineJoinDemo');
+            if (lineJoinDemo.getContext) {
+                var ctx = lineJoinDemo.getContext('2d');
+                var lineJoin = ['round','bevel','miter'];
+                ctx.lineWidth = 10;
+                for (var i=0;i<lineJoin.length;i++){
+                    ctx.lineJoin = lineJoin[i];
+                    ctx.beginPath();
+                    ctx.moveTo(10,20+i*40);
+                    ctx.lineTo(50,60+i*40);
+                    ctx.lineTo(90,20+i*40);
+                    ctx.lineTo(130,60+i*40);
+                    ctx.lineTo(170,20+i*40);
+                    ctx.stroke();
+                }
+            }
+            var lineDashDemo = document.getElementById('lineDashDemo');
+            if (lineDashDemo.getContext) {
+                var ctxl = lineDashDemo.getContext('2d');
+                var offset = 0;
+                
+                function drawDash() {
+                    ctxl.clearRect(0,0, canvas.width, canvas.height);
+                    ctxl.setLineDash([4, 2]);
+                    ctxl.lineDashOffset = -offset;
+                    ctxl.strokeRect(20,20, 129, 129);
+                }
+                
+                function march() {
+                    offset++;
+                    if (offset > 16) {
+                        offset = 0;
+                    }
+                    drawDash();
+                    setTimeout(march, 80);
+                }
+    
+                march();
+            }
+            var lineGradientDemo = document.getElementById('lineGradientDemo');
+            if (lineGradientDemo.getContext) {
+                var ctx = lineGradientDemo.getContext('2d');
+    
+                // Create gradients
+                var lingrad = ctx.createLinearGradient(0,0,0,150);
+                lingrad.addColorStop(0, '#00ABEB');
+                lingrad.addColorStop(0.5, '#fff');
+                lingrad.addColorStop(0.5, '#26C000');
+                lingrad.addColorStop(1, '#fff');
+    
+                var lingrad2 = ctx.createLinearGradient(0,50,0,95);
+                lingrad2.addColorStop(0.5, '#000');
+                lingrad2.addColorStop(1, 'rgba(0,0,0,0)');
+    
+                // assign gradients to fill and stroke styles
+                ctx.fillStyle = lingrad;
+                ctx.strokeStyle = lingrad2;
+    
+                // draw shapes
+                ctx.fillRect(10,10,130,130);
+                ctx.strokeRect(50,50,50,50);
+            }
+            var radioGradientDemo = document.getElementById('radioGradientDemo');
+            if (radioGradientDemo.getContext) {
+                var ctx = radioGradientDemo.getContext('2d');
+                // 创建渐变
+                var radgrad = ctx.createRadialGradient(45,45,10,52,50,30);
+                radgrad.addColorStop(0, '#A7D30C');
+                radgrad.addColorStop(0.9, '#019F62');
+                radgrad.addColorStop(1, 'rgba(1,159,98,0)');
+    
+                var radgrad2 = ctx.createRadialGradient(105,105,20,112,120,50);
+                radgrad2.addColorStop(0, '#FF5F98');
+                radgrad2.addColorStop(0.75, '#FF0188');
+                radgrad2.addColorStop(1, 'rgba(255,1,136,0)');
+    
+                var radgrad3 = ctx.createRadialGradient(95,15,15,102,20,40);
+                radgrad3.addColorStop(0, '#00C9FF');
+                radgrad3.addColorStop(0.8, '#00B5E2');
+                radgrad3.addColorStop(1, 'rgba(0,201,255,0)');
+    
+                var radgrad4 = ctx.createRadialGradient(0,150,50,0,140,90);
+                radgrad4.addColorStop(0, '#F4F201');
+                radgrad4.addColorStop(0.8, '#E4C700');
+                radgrad4.addColorStop(1, 'rgba(228,199,0,0)');
+    
+                // 画图形
+                ctx.fillStyle = radgrad4;
+                ctx.fillRect(0,0,150,150);
+                ctx.fillStyle = radgrad3;
+                ctx.fillRect(0,0,150,150);
+                ctx.fillStyle = radgrad2;
+                ctx.fillRect(0,0,150,150);
+                ctx.fillStyle = radgrad;
+                ctx.fillRect(0,0,150,150);
+            }
+            var translateDemo = document.getElementById('translateDemo');
+            if (translateDemo.getContext) {
+                var ctx = translateDemo.getContext('2d');
+                ctx.fillRect(0,0,300,300);
+                for (var i=0;i<3;i++) {
+                    for (var j=0;j<3;j++) {
+                        ctx.save();
+                        ctx.strokeStyle = "#9CFF00";
+                        ctx.translate(50+j*100,50+i*100);
+                        drawSpirograph(ctx,20*(j+2)/(j+1),-8*(i+3)/(i+1),10);
+                        ctx.restore();
+                    }
+                }
+            }
+            function drawSpirograph(ctx,R,r,O){
+                var x1 = R-O;
+                var y1 = 0;
+                var i  = 1;
+                ctx.beginPath();
+                ctx.moveTo(x1,y1);
+                do {
+                    if (i>20000) break;
+                    var x2 = (R+r)*Math.cos(i*Math.PI/72) - (r+O)*Math.cos(((R+r)/r)*(i*Math.PI/72))
+                    var y2 = (R+r)*Math.sin(i*Math.PI/72) - (r+O)*Math.sin(((R+r)/r)*(i*Math.PI/72))
+                    ctx.lineTo(x2,y2);
+                    x1 = x2;
+                    y1 = y2;
+                    i++;
+                } while (x2 != R-O && y2 != 0 );
+                ctx.stroke();
+            }
+            var rotateDemo = document.getElementById('rotateDemo');
+            if (rotateDemo.getContext) {
+                var ctx = rotateDemo.getContext('2d');
+                ctx.translate(75,75);
+        
+                for (var i=1;i<6;i++){ // Loop through rings (from inside to out)
+                    ctx.save();
+                    ctx.fillStyle = 'rgb('+(51*i)+','+(255-51*i)+',255)';
+            
+                    for (var j=0;j<i*6;j++){ // draw individual dots
+                        ctx.rotate(Math.PI*2/(i*6));
+                        ctx.beginPath();
+                        ctx.arc(0,i*12.5,5,0,Math.PI*2,true);
+                        ctx.fill();
+                    }
+            
+                    ctx.restore();
+                }
+            }
+            
+            var sun = new Image();
+            var moon = new Image();
+            var earth = new Image();
+            function init(){
+                sun.src = 'https://mdn.mozillademos.org/files/1456/Canvas_sun.png';
+                moon.src = 'https://mdn.mozillademos.org/files/1443/Canvas_moon.png';
+                earth.src = 'https://mdn.mozillademos.org/files/1429/Canvas_earth.png';
+                window.requestAnimationFrame(drawSolar);
+            }
+    
+            function drawSolar() {
+                var ctx = document.getElementById('animateSolar').getContext('2d');
+        
+                ctx.globalCompositeOperation = 'destination-over';
+                ctx.clearRect(0,0,300,300); // clear canvas
+        
+                ctx.fillStyle = 'rgba(0,0,0,0.4)';
+                ctx.strokeStyle = 'rgba(0,153,255,0.4)';
+                ctx.save();
+                ctx.translate(150,150);
+        
+                // Earth
+                var time = new Date();
+                ctx.rotate( ((2*Math.PI)/60)*time.getSeconds() + ((2*Math.PI)/60000)*time.getMilliseconds() );
+                ctx.translate(105,0);
+                ctx.fillRect(0,-12,50,24); // Shadow
+                ctx.drawImage(earth,-12,-12);
+        
+                // Moon
+                ctx.save();
+                ctx.rotate( ((2*Math.PI)/6)*time.getSeconds() + ((2*Math.PI)/6000)*time.getMilliseconds() );
+                ctx.translate(0,28.5);
+                ctx.drawImage(moon,-3.5,-3.5);
+                ctx.restore();
+        
+                ctx.restore();
+        
+                ctx.beginPath();
+                ctx.arc(150,150,105,0,Math.PI*2,false); // Earth orbit
+                ctx.stroke();
+        
+                ctx.drawImage(sun,0,0,300,300);
+        
+                window.requestAnimationFrame(drawSolar);
+            }
+            init();
+    
+            function clock(){
+                var now = new Date();
+                var ctx = document.getElementById('animateClock').getContext('2d');
+                ctx.save();
+                ctx.clearRect(0,0,150,150);
+                ctx.translate(75,75);
+                ctx.scale(0.4,0.4);
+                ctx.rotate(-Math.PI/2);
+                ctx.strokeStyle = "black";
+                ctx.fillStyle = "white";
+                ctx.lineWidth = 8;
+                ctx.lineCap = "round";
+        
+                // Hour marks
+                ctx.save();
+                for (var i=0;i<12;i++){
+                    ctx.beginPath();
+                    ctx.rotate(Math.PI/6);
+                    ctx.moveTo(100,0);
+                    ctx.lineTo(120,0);
+                    ctx.stroke();
+                }
+                ctx.restore();
+        
+                // Minute marks
+                ctx.save();
+                ctx.lineWidth = 5;
+                for (i=0;i<60;i++){
+                    if (i%5!=0) {
+                        ctx.beginPath();
+                        ctx.moveTo(117,0);
+                        ctx.lineTo(120,0);
+                        ctx.stroke();
+                    }
+                    ctx.rotate(Math.PI/30);
+                }
+                ctx.restore();
+        
+                var sec = now.getSeconds();
+                var min = now.getMinutes();
+                var hr  = now.getHours();
+                hr = hr>=12 ? hr-12 : hr;
+        
+                ctx.fillStyle = "black";
+        
+                // write Hours
+                ctx.save();
+                ctx.rotate( hr*(Math.PI/6) + (Math.PI/360)*min + (Math.PI/21600)*sec )
+                ctx.lineWidth = 14;
+                ctx.beginPath();
+                ctx.moveTo(-20,0);
+                ctx.lineTo(80,0);
+                ctx.stroke();
+                ctx.restore();
+        
+                // write Minutes
+                ctx.save();
+                ctx.rotate( (Math.PI/30)*min + (Math.PI/1800)*sec )
+                ctx.lineWidth = 10;
+                ctx.beginPath();
+                ctx.moveTo(-28,0);
+                ctx.lineTo(112,0);
+                ctx.stroke();
+                ctx.restore();
+        
+                // Write seconds
+                ctx.save();
+                ctx.rotate(sec * Math.PI/30);
+                ctx.strokeStyle = "#D40000";
+                ctx.fillStyle = "#D40000";
+                ctx.lineWidth = 6;
+                ctx.beginPath();
+                ctx.moveTo(-30,0);
+                ctx.lineTo(83,0);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.arc(0,0,10,0,Math.PI*2,true);
+                ctx.fill();
+                ctx.beginPath();
+                ctx.arc(95,0,10,0,Math.PI*2,true);
+                ctx.stroke();
+                ctx.fillStyle = "rgba(0,0,0,0)";
+                ctx.arc(0,0,3,0,Math.PI*2,true);
+                ctx.fill();
+                ctx.restore();
+        
+                ctx.beginPath();
+                ctx.lineWidth = 14;
+                ctx.strokeStyle = '#325FA2';
+                ctx.arc(0,0,142,0,Math.PI*2,true);
+                ctx.stroke();
+        
+                ctx.restore();
+        
+                window.requestAnimationFrame(clock);
+            }
+    
+            window.requestAnimationFrame(clock);
+        }
+        
+        var img = new Image();
+
+        // User Variables - customize these to change the image being scrolled, its
+        // direction, and the speed.
+
+        img.src = 'https://mdn.mozillademos.org/files/4553/Capitan_Meadows,_Yosemite_National_Park.jpg';
+        var CanvasXSize = 800;
+        var CanvasYSize = 200;
+        var speed = 30; //lower is faster
+        var scale = 1.05;
+        var y = -4.5; //vertical offset
+
+        // Main program
+
+        var dx = 0.75;
+        var imgW;
+        var imgH;
+        var x = 0;
+        var clearX;
+        var clearY;
+        var ctx;
+
+        img.onload = function() {
+            imgW = img.width*scale;
+            imgH = img.height*scale;
+            if (imgW > CanvasXSize) { x = CanvasXSize-imgW; } // image larger than canvas
+            if (imgW > CanvasXSize) { clearX = imgW; } // image larger than canvas
+            else { clearX = CanvasXSize; }
+            if (imgH > CanvasYSize) { clearY = imgH; } // image larger than canvas
+            else { clearY = CanvasYSize; }
+            //Get Canvas Element
+            ctx = document.getElementById('animatePhoto').getContext('2d');
+            //Set Refresh Rate
+            return setInterval(drawPhoto, speed);
+        }
+
+        function drawPhoto() {
+            //Clear Canvas
+            ctx.clearRect(0,0,clearX,clearY);
+            //If image is <= Canvas Size
+            if (imgW <= CanvasXSize) {
+                //reset, start from beginning
+                if (x > (CanvasXSize)) { x = 0; }
+                //draw aditional image
+                if (x > (CanvasXSize-imgW)) { ctx.drawImage(img,x-CanvasXSize+1,y,imgW,imgH); }
+            }
+            //If image is > Canvas Size
+            else {
+                //reset, start from beginning
+                if (x > (CanvasXSize)) { x = CanvasXSize-imgW; }
+                //draw aditional image
+                if (x > (CanvasXSize-imgW)) { ctx.drawImage(img,x-imgW+1,y,imgW,imgH); }
+            }
+            //draw image
+            ctx.drawImage(img,x,y,imgW,imgH);
+            //amount to move
+            x += dx;
+        }
+    </script>
+    <style type="text/css">
+        canvas {
+            border: 1px solid #000;
+            border-radius: 5px;
+            background-color: #FAFAFA;
+        }
+    </style>
+</head>
+<body onload="draw();">
+<canvas id="tutorial" width="150" height="150"></canvas>
+<canvas id="rectDemo" width="150" height="150"></canvas>
+<canvas id="triDemo" width="150" height="150"></canvas>
+<canvas id="smileFace" width="150" height="150"></canvas>
+<canvas id="twoTri" width="150" height="150"></canvas>
+<canvas id="arcDemo" width="150" height="200"></canvas>
+<canvas id="path2dDemo" width="150" height="150"></canvas>
+<canvas id="colorBord" width="170" height="170"></canvas>
+<canvas id="corlorfulCircle" width="170" height="170"></canvas>
+<canvas id="alphaDemo" width="170" height="170"></canvas>
+<canvas id="rgbaDemo" width="170" height="170"></canvas>
+<canvas id="lineWidthDemo" width="170" height="170"></canvas>
+<canvas id="lineCapDemo" width="170" height="170"></canvas>
+<canvas id="lineJoinDemo" width="180" height="170"></canvas>
+<canvas id="lineDashDemo" width="170" height="170"></canvas>
+<canvas id="lineGradientDemo" width="150" height="150"></canvas>
+<canvas id="radioGradientDemo" width="150" height="150"></canvas>
+<canvas id="translateDemo" width="300" height="300"></canvas>
+<canvas id="rotateDemo" width="150" height="150"></canvas>
+<canvas id="animateSolar" width="300" height="300"></canvas>
+<canvas id="animateClock" width="150" height="150"></canvas>
+<canvas id="animatePhoto" width="800" height="200"></canvas>
+</body>
+</html>

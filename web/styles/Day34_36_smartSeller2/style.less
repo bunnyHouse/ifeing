@@ -1,0 +1,51 @@
+@import url('../common/initialization');
+@import url('../common/color');
+
+#table-wrapper {
+    table {
+        border-collapse: collapse;
+        td {
+            padding: 2px 10px;
+            text-align: center;
+        }
+        thead {
+            td {
+                background-color: rgb(96, 172, 252);
+            }
+        }
+        tbody {
+            tr {
+                border-bottom: 1px solid @as-gray-lighter;
+                &:nth-child(even) {
+                    background-color: #F7F7F7;
+                }
+                &.onview {
+                    background-color: rgba(96, 172, 252, .4);
+                }
+            }
+        }
+    }
+}
+
+.graph-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+canvas {
+    margin: 30px 0 0 0;
+    border: 1px solid @as-gray-lighter;
+    border-radius: 5px;
+    background-color: @as-bg-gray-lighter;
+}
+
+.dataTable {
+    width: 735px;
+    height: 310px;
+    margin: 0 auto;
+}
+
+.title {
+    text-align: center;
+}
