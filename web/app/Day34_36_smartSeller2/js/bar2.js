@@ -12,8 +12,6 @@ var barWidth = 60;
 var barColor = ['#60acfc', '#32d3eb', '#5bc49f', '#feb64d', '#ff7c7c', '#9287e7', '#05fffd', '#050db9', '#800800'];
 var barAxisColor = 'rgba(0,0,0,.5)';
 
-drawAllBars();
-
 //画出所有产品的柱状图
 function drawAllBars(sourceObj) {
     cleanBarCanvas();

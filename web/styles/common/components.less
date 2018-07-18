@@ -14,6 +14,7 @@
     height: @length;
     border-left: @width @style @color;
 }
+
 .as-divider-row(@length: 30px, @width: 1px, @style: solid, @color: @as-divider-gray) {
     display: block;
     width: @length;
@@ -29,7 +30,6 @@
     }
 }
 
-
 /* =================== button ===================== */
 /* 
  params:
@@ -43,9 +43,28 @@
     -moz-border-radius: 3px;
     border-radius: 3px;
     cursor: pointer;
+    outline: none;
     &:active {
         background: linear-gradient(#F2F4F7, @as-white);
     }
+}
+
+.as-btn-primary() {
+    .as-btn();
+    background: @as-btn-primary;
+    &:active {
+        background: @as-btn-primary-active;
+    }
+    color: @as-white;
+}
+
+.as-btn-danger() {
+    .as-btn();
+    background: @as-btn-danger;
+    &:active {
+        background: @as-btn-danger-active;
+    }
+    color: @as-white;
 }
 
 /*
@@ -75,8 +94,6 @@
         }
     }
 }
-
-
 
 /* ===================== input ======================= */
 /*

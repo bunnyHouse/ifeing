@@ -24,9 +24,10 @@ function getSelectedProducts() {
 
 //获取数据
 function getSelectedData() {
+    var source = JSON.parse(localStorage.sourceData);
     var regions = getSelectedRegions();
     var products = getSelectedProducts();
-    var data = filtData(sourceData, 'region', regions);
+    var data = filtData(source, 'region', regions);
     data = filtData(data, 'product', products);
     return data;
 }
@@ -42,15 +43,15 @@ function initTable(dataArr) {
     //生成表头
     var htr = document.createElement('tr');
     for (var i = 0; i < 14; i++) {
-        var td = document.createElement('td');
+        var th = document.createElement('th');
         if (i === 0) {
-            td.innerHTML = regionFirst ? '地区' : '商品';
+            th.innerHTML = regionFirst ? '地区' : '商品';
         } else if (i === 1) {
-            td.innerHTML = regionFirst ? '商品' : '地区';
+            th.innerHTML = regionFirst ? '商品' : '地区';
         } else {
-            td.innerHTML = (i - 1) + '月';
+            th.innerHTML = (i - 1) + '月';
         }
-        htr.appendChild(td);
+        htr.appendChild(th);
     }
     //生成表格主体
     dataArr = dataArr || sourceData;
@@ -78,18 +79,24 @@ function initTable(dataArr) {
         if (firstObj[data[firstField]] > 0) {
             firstTd.rowSpan = firstObj[data[firstField]];
             firstTd.innerHTML = data[firstField];
+            firstTd.classList.add(firstField + 'Td');
             tr.appendChild(firstTd);
             firstObj[data[firstField]] = -1;
         }
         var secondTd = document.createElement('td');
         var secondField = regionFirst ? 'product' : 'region';
         secondTd.innerHTML = data[secondField];
+        secondTd.classList.add(secondField + 'Td');
         
         tr.appendChild(secondTd);
         var sale = data.sale;
         for (var j = 0; j < sale.length; j++) {
             var td = document.createElement('td');
+            td.classList.add('salesTd');
+            td.setAttribute('index', j);
             td.innerHTML = sale[j];
+            //给td绑定点击事件开始编辑
+            startEdit(td);
             tr.appendChild(td);
         }
         tr.setAttribute('class', 'dataRow');
@@ -124,17 +131,18 @@ function showSingleInfo() {
     var trs = document.querySelectorAll('.dataRow');
     for (var t = 0; t < trs.length; t++) {
         var tr = trs[t];
-        tr.addEventListener('mouseenter', function(e) {
+        tr.addEventListener('mouseenter', function (e) {
             var self = this;
             self.classList.add('onview');
             var region = self.getAttribute('region');
             var product = self.getAttribute('product');
-            var saleObj = filtData(sourceData, 'region', region);
+            var source = JSON.parse(localStorage.sourceData);
+            var saleObj = filtData(source, 'region', region);
             saleObj = filtData(saleObj, 'product', product);
             drawAllLine(saleObj);
             drawAllBars(saleObj);
         });
-        tr.addEventListener('mouseleave', function(e) {
+        tr.addEventListener('mouseleave', function (e) {
             var self = this;
             self.classList.remove('onview');
         })
@@ -144,9 +152,111 @@ function showSingleInfo() {
 //鼠标移出事件
 function showAllInfo() {
     var tb = document.querySelector('table')
-    tb.addEventListener('mouseleave', function() {
+    tb.addEventListener('mouseleave', function () {
         var data = getSelectedData();
         drawAllLine(data);
         drawAllBars(data);
     })
+}
+
+//鼠标点击单元格时触发编辑的事件
+function startEdit(td) {
+    td.addEventListener('click', function (e) {
+        var self = this;
+        var original = self.innerHTML;
+        var sale = self.textContent;
+        var onEdit = self.classList.contains('onEdit');
+        //若点击的元素不是td本身则不触发
+        if (e.target.tagName !== 'TD' && e.target.tagName !== 'I' || onEdit) {
+            return false;
+        }
+        cancleEditWhenClickOther(self, original);
+        //变为输入框
+        var inputGroup = document.createElement('span');
+        inputGroup.classList.add('input-group');
+        var input = document.createElement('input');
+        input.setAttribute('type', 'number');
+        input.classList.add('edit-cpnt');
+        input.value = sale;
+        self.innerHTML = '';
+        
+        //加入取消和修改按钮
+        var confirmBtn = document.createElement('button');
+        confirmBtn.classList.add('confirm-btn', 'edit-cpnt');
+        var confirmIco = document.createElement('i');
+        confirmIco.classList.add('asfont', 'icon-checkmarkround');
+        confirmBtn.appendChild(confirmIco);
+        var cancelBtn = document.createElement('button');
+        cancelBtn.classList.add('cancel-btn', 'edit-cpnt');
+        var cancelIco = document.createElement('i');
+        cancelIco.classList.add('asfont', 'icon-cancel');
+        cancelBtn.appendChild(cancelIco);
+        inputGroup.appendChild(input);
+        inputGroup.appendChild(confirmBtn);
+        self.appendChild(inputGroup);
+        self.appendChild(cancelBtn);
+        input.focus();
+        self.classList.add('onEdit');
+        
+        //绑定取消编辑事件
+        cancelBtn.addEventListener('click', cancleEdit);    //取消按钮
+        input.addEventListener('keyup', function (e) {       //esc键
+            if (e.keyCode === 27) {
+                cancleEdit(e);
+            }
+        });
+        
+        //绑定确认编辑事件
+        confirmBtn.addEventListener('click', confirmEdit);      //确认按钮
+        input.addEventListener('keyup', function(e) {           //回车键
+            if (e.keyCode === 13) {
+                confirmEdit(e);
+            }
+        });
+        
+        //取消编辑
+        function cancleEdit(e) {
+            self.innerHTML = original;
+            self.classList.remove('onEdit');
+            e.stopPropagation();
+        }
+        
+        //确认编辑
+        function confirmEdit(e) {
+            var btn = this;
+            if (e.type === 'keyup') {
+                btn = e.target.nextSibling;
+            }
+            var td = btn.parentNode.parentNode;
+            var tr = td.parentNode;
+            var product = tr.getAttribute('product');
+            var region = tr.getAttribute('region');
+            var index = td.getAttribute('index');
+            var newVal = +input.value;
+            var d = JSON.parse(localStorage.sourceData);
+            d.forEach(function(val, i) {
+                if (val.product === product && val.region === region) {
+                    val.sale[index] = newVal;
+                }
+            });
+            localStorage.sourceData = JSON.stringify(d);
+            self.innerHTML = newVal;
+            self.classList.remove('onEdit');
+            e.stopPropagation();
+            initTable(d);
+            drawAllLine(d);
+            drawAllBars(d);
+        }
+    });
+}
+
+//点击页面其他地方取消编辑
+function cancleEditWhenClickOther(self, original) {
+    document.addEventListener('click', function (e) {
+        var target = e.target;
+        if (target !== self && !target.classList.contains('edit-cpnt')) {
+            self.innerHTML = original;
+            self.classList.remove('onEdit');
+        }
+    });
 }

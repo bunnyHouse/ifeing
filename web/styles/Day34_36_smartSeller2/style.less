@@ -1,15 +1,34 @@
 @import url('../common/initialization');
 @import url('../common/color');
+@import url('../common/icon');
+@import url('../common/components');
+
+.title {
+    text-align: center;
+}
+
+.data-wrapper {
+    width: 310px;
+    margin: 0 auto;
+    div {
+        display: inline-block;
+    }
+}
 
 #table-wrapper {
+    display: flex;
+    justify-content: center;
+    height: 260px;
+    margin-top: 15px;
     table {
         border-collapse: collapse;
-        td {
-            padding: 2px 10px;
+        td, th {
+            width: 75px;
+            padding: 2px 0;
             text-align: center;
         }
         thead {
-            td {
+            th {
                 background-color: rgb(96, 172, 252);
             }
         }
@@ -22,6 +41,36 @@
                 &.onview {
                     background-color: rgba(96, 172, 252, .4);
                 }
+                
+                td {
+                    white-space: nowrap;
+                    cursor: default;
+                    &.salesTd {
+                        cursor: pointer;
+                        &:hover {
+                            background: url("../../img/Day34_36_smartSeller2/edit.png") right no-repeat;
+                        }
+                    }
+                    .input-group {
+                        .as-input-group();
+                        display: inline-block;
+                        height: 20px;
+                        input {
+                            padding: 0;
+                            width: 55px;
+                        }
+                        .confirm-btn {
+                            .as-btn-primary();
+                            padding: 0 2px;
+                            color: @as-white;
+                        }
+                    }
+                    .cancel-btn {
+                        .as-btn-danger();
+                        padding: 0 2px;
+                        color: @as-white;
+                    }
+                }
             }
         }
     }
@@ -31,21 +80,10 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
-}
-
-canvas {
-    margin: 30px 0 0 0;
-    border: 1px solid @as-gray-lighter;
-    border-radius: 5px;
-    background-color: @as-bg-gray-lighter;
-}
-
-.dataTable {
-    width: 735px;
-    height: 310px;
-    margin: 0 auto;
-}
-
-.title {
-    text-align: center;
+    canvas {
+        margin: 30px 0 0 0;
+        border: 1px solid @as-gray-lighter;
+        border-radius: 5px;
+        background-color: @as-bg-gray-lighter;
+    }
 }

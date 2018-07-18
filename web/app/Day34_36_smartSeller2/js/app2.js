@@ -4,7 +4,9 @@ var productSelect = document.querySelector('#product-select');
 initRegionSelect();
 initProductSelect();
 
-initTable();
+initializeData();
+
+initTable(JSON.parse(localStorage.sourceData));
 
 //初始化地区选择
 function initRegionSelect() {
@@ -54,4 +56,6 @@ function initProductSelect() {
     createCheckAllBoxs(productSelect, productArr, options);
 }
 
-drawLine('lineGraph', 'data');
+drawAllLine(JSON.parse(localStorage.sourceData));
+
+drawAllBars(JSON.parse(localStorage.sourceData));

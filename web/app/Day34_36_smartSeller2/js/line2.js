@@ -13,8 +13,6 @@ var nodeRadius = 3;
 
 var axisColor = 'rgba(0,0,0,.5)';
 
-drawAllLine();
-
 //画出坐标轴以及所有折线
 function drawAllLine(sourceObj) {
     cleanCanvas();
