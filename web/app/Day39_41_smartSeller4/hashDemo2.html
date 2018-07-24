@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<button id="a">A</button>
+<button id="b">B</button>
+<button id="c">C</button>
+
+<button id="d">D</button>
+<button id="e">E</button>
+<button id="f">F</button>
+
+
+<div id="contABC"></div>
+<div id="contDEF"></div>
+</body>
+
+<script>
+    var hashArr = [];
+    var btns = document.querySelectorAll('button');
+    var btnabc = document.querySelectorAll('#a, #b, #c');
+    var btndef = document.querySelectorAll('#d, #e, #f');
+    var contabc = document.querySelector('#contABC');
+    var contdef = document.querySelector('#contDEF');
+    
+    //根据点击的按钮设置hash，以&作为分隔符拼接撑字符串
+    function setHash(btn) {
+        if (hasBtn(btn, btnabc)) {
+            hashArr[0] = btn.textContent;
+        } else if (hasBtn(btn, btndef)) {
+            hashArr[1] = btn.textContent;
+        }
+        console.log(hashArr);
+        location.hash = hashArr.join('&');
+    }
+    
+    //获取hash，并以&为分隔符分割撑数组
+    function getHash() {
+        var hashStr = location.hash.substr(1);
+        return hashStr ? hashStr.split('&') : false;
+    }
+    
+    //根据获取的hash数组渲染页面
+    function renderCont() {
+        var hashs = getHash();
+        if (hashs) {
+            contabc.textContent = hashs[0];
+            contdef.textContent = hashs[1];
+        }
+    }
+    
+    //判断按钮在哪个按钮组中
+    function hasBtn(btn, btns) {
+        var id = btn.id;
+        for (var i = 0; i < btns.length; i++) {
+            if (id === btns[i].id) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    //绑定按钮点击事件
+    for (var i = 0; i < btns.length; i++) {
+        var btn = btns[i];
+        btn.addEventListener('click', function() {
+            setHash(this);
+            renderCont();
+        })
+    }
+    
+    //页面加载完成先渲染一次
+    renderCont();
+</script>
+</html>

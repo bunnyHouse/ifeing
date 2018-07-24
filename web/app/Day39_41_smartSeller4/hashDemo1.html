@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<button id="a">A</button>
+<button id="b">B</button>
+<button id="c">C</button>
+<div id="cont"></div>
+</body>
+<script>
+    var btns = document.querySelectorAll('button');
+    var cont = document.querySelector('#cont');
+    
+    function getHash() {
+        return location.hash.substr(1);
+    }
+    
+    function renderCont() {
+        var hash = getHash();
+        cont.textContent = hash;
+    }
+    
+    for (var i = 0; i < btns.length; i++) {
+        var btn = btns[i];
+        btn.addEventListener('click', function() {
+            location.hash = this.textContent;
+            renderCont();
+        })
+    }
+    
+    window.addEventListener('hashchange', function(n, o) {
+        renderCont();
+    })
+    
+    window.onload = function() {
+        if (location.hash) {
+            renderCont();
+        }
+    };
+</script>
+</html>
