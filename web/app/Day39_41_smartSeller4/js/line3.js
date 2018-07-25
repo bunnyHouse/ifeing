@@ -1,13 +1,6 @@
 var canvas = document.getElementById('lineGraph');
 var ctx = canvas.getContext('2d');
-var width = canvas.width;
-var height = canvas.height;
-var startX = 30.5;
-var endX = width - 15;
-var startY = height - 24.5
-var endY = 15;
-var firstPointX = startX + 20;
-var interval = (width - firstPointX - 30) / 11;
+var width, height, startX, endX, startY, endY, firstPointX, interval;
 var lineColor = ['#60acfc', '#32d3eb', '#5bc49f', '#feb64d', '#ff7c7c', '#9287e7', '#05fffd', '#050db9', '#800800'];
 var nodeRadius = 3;
 
@@ -15,6 +8,14 @@ var axisColor = 'rgba(0,0,0,.5)';
 
 //画出坐标轴以及所有折线
 function drawAllLine(sourceObj) {
+    width = canvas.width;
+    height = canvas.height;
+    startX = 30.5;
+    endX = width * 0.986;
+    startY = height - 24.5
+    endY = 15;
+    firstPointX = startX + 20;
+    interval = (width - firstPointX - 30) / 11;
     cleanCanvas();
     sourceObj = sourceObj || sourceData;
     var saleData = formatData(sourceObj);

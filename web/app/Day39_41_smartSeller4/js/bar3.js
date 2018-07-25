@@ -1,19 +1,20 @@
 var barCanvas = document.getElementById('barGraph');
 var barCtx = barCanvas.getContext('2d');
-var barCanvasWidth = barCanvas.width;
-var barCanvasHeight = barCanvas.height;
-var barStartX = 30.5;
-var barEndX = barCanvasWidth - 15;
-var barStartY = barCanvasHeight - 24.5
-var barEndY = 15;
-var barInterval = 10;
-var barWidth = 60;
+var barCanvasWidth, barCanvasHeight, barStartX, barEndX, barStartY, barEndY, barInterval, barWidth;
 
 var barColor = ['#60acfc', '#32d3eb', '#5bc49f', '#feb64d', '#ff7c7c', '#9287e7', '#05fffd', '#050db9', '#800800'];
 var barAxisColor = 'rgba(0,0,0,.5)';
 
 //画出所有产品的柱状图
 function drawAllBars(sourceObj) {
+    barCanvasWidth = barCanvas.width;
+    barCanvasHeight = barCanvas.height;
+    barStartX = 30.5;
+    barEndX = barCanvasWidth * 0.986;
+    barStartY = barCanvasHeight - 24.5
+    barEndY = 15;
+    barInterval = barCanvas.width * 0.01;
+    barWidth = barCanvas.width * 0.068;
     cleanBarCanvas();
     sourceObj = sourceObj || sourceData;
     var data = formatBarData(sourceObj);

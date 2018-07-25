@@ -1,5 +1,8 @@
 var regionSelect = document.querySelector('#region-select');
 var productSelect = document.querySelector('#product-select');
+var lineGraph = document.querySelector('#lineGraph');
+var barGraph = document.querySelector('#barGraph');
+var graphWrapper = document.querySelector('.graph-wrapper');
 
 initRegionSelect();
 initProductSelect();
@@ -7,6 +10,10 @@ initProductSelect();
 initializeData();
 
 initTable(JSON.parse(localStorage.sourceData));
+
+drawAllLine(JSON.parse(localStorage.sourceData));
+
+drawAllBars(JSON.parse(localStorage.sourceData));
 
 //初始化地区选择
 function initRegionSelect() {
@@ -56,6 +63,22 @@ function initProductSelect() {
     createCheckAllBoxs(productSelect, productArr, options);
 }
 
-drawAllLine(JSON.parse(localStorage.sourceData));
+//根据窗口大小动态调整canvas画布大小
+window.addEventListener('resize', function(e) {
+    var wrapperWidth = graphWrapper.offsetWidth;
+    lineGraph.setAttribute('width', wrapperWidth * .447);
+    lineGraph.setAttribute('height', this.innerHeight * .52);
+    barGraph.setAttribute('width', wrapperWidth * .537);
+    barGraph.setAttribute('height', this.innerHeight * .52);
+    init();
+});
 
-drawAllBars(JSON.parse(localStorage.sourceData));
+//根据窗口大小动态调整canvas画布大小
+window.addEventListener('load', function() {
+    var wrapperWidth = graphWrapper.offsetWidth;
+    lineGraph.setAttribute('width', wrapperWidth * .447);
+    lineGraph.setAttribute('height', this.innerHeight * .52);
+    barGraph.setAttribute('width', wrapperWidth * .537);
+    barGraph.setAttribute('height', this.innerHeight * .52);
+    init();
+});

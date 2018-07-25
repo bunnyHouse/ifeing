@@ -115,11 +115,11 @@ if (history.pushState) {
 }
 
 //分享或再次打开某个URL，需要从URL中读取到数据状态，并且进行页面呈现的还原
-window.onload = function() {
+window.addEventListener('load', function(){
     if (!location.hash) {
         return;
     }
     var hashArr = JSON.parse(decodeURI(location.hash.substr(1)));
     reloadCheckbox(hashArr);
     init();
-}
+});
