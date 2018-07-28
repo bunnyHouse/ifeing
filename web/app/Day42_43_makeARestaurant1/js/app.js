@@ -1,70 +1,84 @@
 var commonService = commonService();
 
-/*
-* =================== 餐厅类 ====================
-* */
+/**
+ * =================== 餐厅类 ====================
+ * @class Restaurant
+ * @constructor
+ * @param {Object} 初始化餐厅
+ * @property {Number} cash -餐厅资金
+ * @property {Number} seats -餐厅座位数量
+ * @property {Object[]} staff -餐厅职员列表
+ */
 function Restaurant(res) {
     this.cash = res.cash;   //金钱
     this.seats = res.seats; //座位数量
     this.staff = res.staff; //职员列表
     var id = 1;
-    Restaurant.getNewId = function() {
+    Restaurant.getNewId = function () {
         return id++;
     }
 }
 
-/*
-* intro：聘用员工
-* arguments：
-*       staff：要雇佣的员工对象
-* return：无
-* */
+/**
+ * 聘用员工的方法
+ * @function
+ * @param {Object} staff -要雇佣的员工对象
+ * @returns：{Object} -更新后的餐厅职工列表
+ */
 Restaurant.prototype.hire = function (staff) {
     this.staff.push(staff);
+    return this.staff;
 };
 
-/*
-* intro：解雇员工
-* arguments：
-*       id：员工id
-* return：返回被解雇的员工对象
-* */
+/**
+ * 解雇员工的方法
+ * @function
+ * @param {Number} id -职工唯一编号
+ * @returns：{Object} -返回被解雇的员工对象
+ */
 Restaurant.prototype.fire = function (id) {
     var index = commonService.getIndexOfArrByValue(id, 'id', this.staff);
     return this.staff.splice(index, 1);
 };
 
 
-/*
-* =================== 职员类 ===================
-* */
+/**
+ * =================== 职员类 ===================
+ * @class Staff
+ * @constructor
+ * @param {String} name -职员名字
+ * @param {Number} salary -职员薪资
+ * @property {Number} id -职员唯一标识id
+ * @property {String} name -职员名字
+ * @property {Number} salary -职员薪资
+ */
 function Staff(name, salary) {
     this.id = Restaurant.getNewId();    //id
     this.name = name;    //姓名
     this.salary = salary;    //工资
 }
 
-/*
-* intro：完成一次工作
-* arguments：
-*       无
-* return：无
-* */
+/**
+ * 完成一次工作
+ * @function
+ */
 Staff.prototype.completeWork = function () {
     console.log('完成了一次工作');
 };
 
 
-/*
-* =================== 服务员类 ===================
-* */
+/**
+ * =================== 服务员类 ===================
+ * @class Waiter
+ * @constructor
+ * @extends Staff
+ * @param {String} name -服务员姓名
+ * @param {Number} salary -职员薪资
+ */
 function Waiter(name, salary) {
     Staff.apply(this, arguments);
 }
 
-/*
-* 继承自职员类
-* */
 Waiter.prototype = Object.create(Staff.prototype);
 Waiter.prototype.constructor = Waiter;
 Waiter.sup = Staff.prototype;
@@ -72,9 +86,9 @@ Waiter.sup = Staff.prototype;
 /*
 * 重写职员类中的完成一次工作方法
 * */
-Waiter.prototype.completeWork = function(args) {
+Waiter.prototype.completeWork = function (args) {
     // 如果参数是数组，则判定为点餐
-    if (args instanceof(Array)) {
+    if (Array.isArray(args)) {
         console.log('客户点了：' + args.join());
     } else {
         // 判定为上菜
@@ -83,16 +97,18 @@ Waiter.prototype.completeWork = function(args) {
 }
 
 
-/*
-* =================== 厨师类 ===================
-* */
+/**
+ * =================== 厨师类 ===================
+ * @class Cook
+ * @constructor
+ * @extends Staff
+ * @param {String} name -厨师姓名
+ * @param {Number} salary -职工薪资
+ */
 function Cook(name, salary) {
     Staff.apply(this, arguments);
 }
 
-/*
-* 继承自职员类
-* */
 Cook.prototype = Object.create(Staff.prototype);
 Cook.prototype.constructor = Cook;
 Cook.sup = Cook.prototype;
@@ -105,37 +121,47 @@ Cook.prototype.completeWork = function (dish) {
 }
 
 
-/*
-* =================== 顾客类 ===================
-**/
+/**
+ * =================== 顾客类 ===================
+ * @class Customer
+ * @constructor
+ */
 function Customer() {
 
 }
-/*
-* intro：点菜
-* arguments：
-*       dishes：数组类型，菜品列表
-* return：菜品数组
-* */
+
+/**
+ * 点菜方法
+ * @function
+ * @param {Object[]} dishes -菜品对象数组，菜品列表
+ * @returns {Object[]} -菜品对象数组，菜品列表
+ */
 Customer.prototype.orderDishes = function (dishes) {
     console.log('我想吃：' + dishes.join());
     return dishes;
 }
 
-/*
-* intro：吃菜
-* arguments：
-*       dish：菜品
-* return：无
-* */
+/**
+ * 吃菜方法
+ * @function
+ * @param {Object} dish -菜品对象
+ */
 Customer.prototype.eat = function (dish) {
     console.log('我要开始吃' + dish + '了！');
 }
 
 
-/*
-* =================== 菜品类 ===================
-* */
+/**
+ * =================== 菜品类 ===================
+ * @class Dish
+ * @constructor
+ * @param {String} name -菜名
+ * @param {Number} cost -成本
+ * @param {Number} price -价格
+ * @property {String} name -菜名
+ * @property {Number} cost -成本
+ * @property {Number} price -价格
+ */
 function Dish(name, cost, price) {
     this.name = name;
     this.cost = cost;

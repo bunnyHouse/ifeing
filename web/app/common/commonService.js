@@ -1,18 +1,18 @@
-/*
-* intro：一些通用方法的集合
-* auth：bunnylover
-* createDate：2018-7-28
-* loc：Pudong library in Shanghai
-* */
+/**
+ * 一些通用方法的集合
+ * @author：bunnylover <756214593@qq.com>
+ * @createDate：2018-7-28
+ * @loc：Pudong library in Shanghai
+ */
 function commonService() {
     var commonService = {
-        /*
-         * intro: 从对象数组中根据某个字段值来查找对应对象在数组中的位置
-         * params:
-         *      value：目标值
-         *      field：目标字段
-         *      arr：目标数组
-         * return：返回数组下标
+        /**
+         * 从对象数组中根据某个字段值来查找对应对象在数组中的位置
+         * @function
+         * @param {String|Number} value -目标值
+         * @param {String} field -目标字段
+         * @param {Array|Object[]} arr -目标数组
+         * @returns：{Number} -返回找到的数组下标，如果没找到则返回-1
          */
         getIndexOfArrByValue: function (value, field, arr) {
             var argLength = arguments.length;
@@ -30,6 +30,7 @@ function commonService() {
                     return i;
                 }
             }
+            return -1;
         }
     }
     return commonService;
