@@ -8,7 +8,23 @@
     <title>Document</title>
 </head>
 <body>
-
+<h3>本案例需要在控制台中操作</h3>
+<h4>测试用例：</h4>
+<p>
+    var ifeRestaurant = new Restaurant({<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;cash: 1000000,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;seats: 20,<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;staff: []<br>
+    });<br><br>
+    
+    var newCook = new Cook("Tony", 10000);<br>
+    ifeRestaurant.hire(newCook);<br><br>
+    
+    console.log(ifeRestaurant.staff);<br><br>
+    
+    ifeRestaurant.fire(newCook);<br>
+    console.log(ifeRestaurant.staff);<br>
+</p>
 </body>
 
 <script src="../common/commonService.js"></script>
