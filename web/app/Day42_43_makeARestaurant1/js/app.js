@@ -10,9 +10,9 @@ var commonService = commonService();
  * @property {Object[]} staff -餐厅职员列表
  */
 function Restaurant(res) {
-    this.cash = res.cash;   //金钱
-    this.seats = res.seats; //座位数量
-    this.staff = res.staff; //职员列表
+    this.cash = res.cash;
+    this.seats = res.seats;
+    this.staff = res.staff;
     var id = 1;
     Restaurant.getNewId = function () {
         return id++;
@@ -53,9 +53,9 @@ Restaurant.prototype.fire = function (id) {
  * @property {Number} salary -职员薪资
  */
 function Staff(name, salary) {
-    this.id = Restaurant.getNewId();    //id
-    this.name = name;    //姓名
-    this.salary = salary;    //工资
+    this.id = Restaurant.getNewId();
+    this.name = name;
+    this.salary = salary;
 }
 
 /**
