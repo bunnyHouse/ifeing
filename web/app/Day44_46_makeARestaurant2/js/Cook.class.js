@@ -21,9 +21,13 @@ var cookFactory = (function(){
     * */
     Cook.prototype.completeWork = function (dishes, customer) {
         for (var i = 0; i < dishes.length; i++) {
-            console.log('[cook] 烹饪出菜品：' + dishes[i].name);
-            //通知服务员上菜
-            waiterFactory.getInstance().serveCustomer(dishes[i], customer);
+            var dish = dishes[i];
+            console.log('[Cook] 开始做菜：' + dish.name);
+            setTimeout(function() {
+                console.log('[Cook] 烹饪出菜品：' + dish.name);
+                //通知服务员上菜
+                waiterFactory.getInstance().serveCustomer(dish, customer);
+            }, 2000);
         }
     }
     

@@ -26,7 +26,7 @@ var waiterFactory = (function () {
         for (var i = 0; i < args.length; i++) {
             dishNames.push(args[i].name);
         }
-        console.log('[waiter] 客户点了：' + dishNames.join());
+        console.log('[Waiter] 客户点了：' + dishNames.join());
         // 通知厨师客户点了什么菜
         cookFactory.getInstance().completeWork(args, customer);
     }
@@ -37,9 +37,24 @@ var waiterFactory = (function () {
      */
     Waiter.prototype.serveCustomer = function (dish, customer) {
         // 上菜
-        console.log('[waiter] 上菜：' + dish.name);
+        console.log('[Waiter] 上菜：' + dish.name);
         // 顾客可以开始用餐
         customer.eat(dish);
+    }
+    
+    /**
+     * 叫号
+     */
+    Waiter.prototype.callNumber = function () {
+        var res = restaurantFactory.getInstance();
+        if (res.queue.length === 0) {
+            console.log('暂无客人排队');
+            return;
+        }
+        var cusToEat = res.queue.shift();
+        console.log('========== ' + cusToEat.name + '请就餐, 当前还有' + res.queue.length + '人等位中 ==========');
+        res.seats--;
+        cusToEat.orderDishes();
     }
     
     return {

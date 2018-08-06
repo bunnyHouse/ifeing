@@ -5,8 +5,8 @@ var commonService = CommonService.getInstance();
  * @class Customer
  * @constructor
  */
-function Customer() {
-
+function Customer(name) {
+    this.name = name;
 }
 
 /**
@@ -25,9 +25,13 @@ Customer.prototype.orderDishes = function () {
         dishes.push(dish);
         dishNames.push(dish.name);
     }
-    console.log('[customer] 我想吃：' + dishNames.join());
-    waiterFactory.getInstance().takeOrder(dishes, this);
-    return dishes;
+    console.log('[Customer] 让我想想吃什么...');
+    var cus = this;
+    setTimeout(function() {
+        console.log('[Customer] 我想吃：' + dishNames.join());
+        waiterFactory.getInstance().takeOrder(dishes, cus);
+    }, 2000);
+    // return dishes;
 }
 
 /**
@@ -36,5 +40,10 @@ Customer.prototype.orderDishes = function () {
  * @param {Object} dish -菜品对象
  */
 Customer.prototype.eat = function (dish) {
-    console.log('[customer] 我要开始吃' + dish.name + '了！');
+    console.log('[Customer] 我要开始吃' + dish.name + '了！');
+    setTimeout(function() {
+        console.log('[Customer] 我把' + dish.name + '吃完了！');
+        res.seats++;
+        waiterFactory.getInstance().callNumber();
+    }, 1500);
 }
