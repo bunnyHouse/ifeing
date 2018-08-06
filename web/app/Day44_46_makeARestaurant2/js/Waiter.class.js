@@ -52,7 +52,7 @@ var waiterFactory = (function () {
             return;
         }
         var cusToEat = res.queue.shift();
-        console.log('========== ' + cusToEat.name + '请就餐, 当前还有' + res.queue.length + '人等位中 ==========');
+        console.log('========== ' + cusToEat.name + ' 请就餐, 当前还有' + res.queue.length + '人等位中 ==========');
         res.seats--;
         cusToEat.orderDishes();
     }
