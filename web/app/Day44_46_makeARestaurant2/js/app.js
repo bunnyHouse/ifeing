@@ -38,6 +38,9 @@ newCusInput.addEventListener('keyup', function(event) {
 });
 function addCusToQueue() {
     var newCusName = newCusInput.value;
+    if (!newCusName || newCusName === '') {
+        return;
+    }
     var newCustomer = new Customer(newCusName);
     res.queue.push(newCustomer);
     if (res.queue.length > 0 && res.seats > 0) {
