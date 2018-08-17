@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>简单工厂模式</h2>
+</body>
+<script>
+    function Java() {
+        this.name = 'java'
+    }
+    function Html() {
+        this.name = 'html'
+    }
+    function Javascript() {
+        this.name = 'javascript'
+    }
+    function LangFactory(language) {
+        switch(language) {
+            case 'java':
+                return new Java();
+                break;
+            case 'html':
+                return new Html();
+                break;
+            case 'javascript':
+                return new Javascript();
+                break;
+            default:
+                console.log('language not exist for now');
+        }
+    }
+    var java = new LangFactory('java');
+    console.log(java.name);
+</script>
+</html>

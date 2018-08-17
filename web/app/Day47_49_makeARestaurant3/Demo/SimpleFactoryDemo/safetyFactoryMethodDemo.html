@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet/less" href="../../../../styles/common/components.less">
+    <script src="../../../../../components/less.min.js"></script>
+    <style>
+        button {
+            padding: 5px 8px;
+            border: 1px solid #CED0DA;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            cursor: pointer;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+<h2>安全的工厂方法模式</h2>
+<btn id="container"></btn>
+</body>
+<script>
+    var BtnFactory = function (type, content) {
+        if (this instanceof BtnFactory) {
+            return new this[type](content);
+        } else {
+            return new BtnFactory(type, content);
+        }
+    }
+    BtnFactory.prototype = {
+        error: function (content) {
+            this.content = content;
+            (function (content) {
+                var btn = document.createElement('button');
+                btn.innerHTML = content;
+                btn.style.backgroundColor = 'red';
+                btn.style.width = '100px';
+                document.getElementById('container').appendChild(btn);
+            })(content);
+        },
+        warning: function (content) {
+            this.content = content;
+            (function (content) {
+                var btn = document.createElement('button');
+                btn.innerHTML = content;
+                btn.style.backgroundColor = 'yellow';
+                btn.style.width = '100px';
+                document.getElementById('container').appendChild(btn);
+            })(content);
+        },
+        normal: function (content) {
+            this.content = content;
+            (function (content) {
+                var btn = document.createElement('button');
+                btn.innerHTML = content;
+                btn.style.backgroundColor = 'blue';
+                btn.style.width = '100px';
+                document.getElementById('container').appendChild(btn);
+            })(content);
+        },
+        success: function (content) {
+            this.content = content;
+            (function (content) {
+                var btn = document.createElement('button');
+                btn.innerHTML = content;
+                btn.style.backgroundColor = 'green';
+                btn.style.width = '100px';
+                document.getElementById('container').appendChild(btn);
+            })(content);
+        }
+    }
+    
+    //test
+    var data = [
+        {type: 'success', content: 'success'},
+        {type: 'warning', content: 'warning'},
+        {type: 'error', content: 'error'},
+        {type: 'normal', content: 'normal'}
+    ];
+    var i = data.length;
+    while (i--) {
+        BtnFactory(data[i].type, data[i].content);
+    }
+</script>
+</html>
